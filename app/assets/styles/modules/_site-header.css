@@ -19,6 +19,7 @@
 
     &__menu-box {
         width: 20vw;
+        min-width: 200px;
         min-height: 100%;
         position: relative;
 
@@ -54,6 +55,7 @@
 
     &__social-img {
         height: 18px;
+        transform: translateY(3px);
     }
 
 

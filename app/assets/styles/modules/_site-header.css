@@ -1,0 +1,60 @@
+.site-header {
+    position: fixed;
+    top: 30px;
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    border-style: solid none;
+    border-width: 3px;
+    justify-content: space-between;
+    
+    &__title {
+        font-family: $josefinSans;
+        font-size: 2.375em;
+        padding: 6px 6px 0px;
+        text-align: center;
+        width: 8em;
+        min-width: 8em;
+    }
+
+    &__menu-box {
+        width: 20vw;
+        min-height: 100%;
+        position: relative;
+
+        &--right {
+
+        }
+    }
+
+    &__menu-content {
+        font-family: Tahoma;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        &--right {
+            right: auto;
+            left: 0;
+        }
+    }
+
+    &__social-item {
+        display: inline;
+        text-align: right;
+        width: 100%;
+        line-height: 1.3em;
+    }
+
+    &__social-div {
+        text-align: right; 
+        width: 100%;
+        padding: 2px 10px 0;
+    }
+
+    &__social-img {
+        height: 18px;
+    }
+
+
+}

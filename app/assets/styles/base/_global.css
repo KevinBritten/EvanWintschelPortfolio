@@ -1,0 +1,8 @@
+body {
+    min-height: 1080px;
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}

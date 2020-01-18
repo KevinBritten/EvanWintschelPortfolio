@@ -21,6 +21,12 @@ let cssConfig = {
 module.exports = {
 	mode: 'development',
 	entry: './app/assets/scripts/app.js',
+	output: {
+		publicPath: ''
+	},
+	// "externals": {
+	// 	"fs": "require('fs')",
+	//  },
 	devServer: {
         before: function(app, server){
             server._watch('./app/*.html');
@@ -38,6 +44,9 @@ module.exports = {
 			skipWaiting: false
 		})
 	],
+	// node: {
+	// 	fs: "empty"
+	// },
 
 
 
@@ -49,8 +58,20 @@ module.exports = {
 				exclude: /(node_modules)/,
 				loader: 'babel-loader'
 			},
-		cssConfig
-		]
+			{ 
+				test: /\.png$/,
+				include: [path.resolve(__dirname, 'app/assets/images/bg-images')],
+				use: [
+					{
+					loader: 'url-loader',
+					options: {
+						name: '[name].[ext]'
+					}
+					}
+				]
+			},
+			cssConfig
+			]
 	},
 
 	optimization: {

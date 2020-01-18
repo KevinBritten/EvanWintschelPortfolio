@@ -7,6 +7,7 @@
     border-style: solid none;
     border-width: 3px;
     justify-content: space-between;
+    background-color: $whiteTrans;
     
     &__title {
         font-family: $josefinSans;
@@ -15,6 +16,9 @@
         text-align: center;
         width: 8em;
         min-width: 8em;
+        height: 100%;
+        letter-spacing: 5px;
+        margin: 0;
     }
 
     &__menu-box {
@@ -33,6 +37,7 @@
         position: absolute;
         bottom: 0;
         right: 0;
+        padding-bottom: 5px;
 
         &--right {
             right: auto;
@@ -41,6 +46,7 @@
     }
 
     &__social-item {
+        font-family: Tahoma;
         display: inline;
         text-align: right;
         width: 100%;

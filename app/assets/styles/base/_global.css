@@ -1,6 +1,9 @@
 body {
+    height: 100vh;
     min-height: 1080px;
     overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 * {

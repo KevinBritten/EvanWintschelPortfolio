@@ -5,6 +5,7 @@ class BackgroundImageChange {
 		this.albumTitleContainer = document.querySelector('.content-area__box');
 		this.totalImages = 3; ///determine number of images dynamically
 		this.albumTitles = this.albumTitleContainer.querySelectorAll('.content-area__album');
+		this.about = document.querySelector('#about-button');
 		this.randomStartImage();
 		this.initializeAlbumIds();
 		this.events();
@@ -16,10 +17,20 @@ class BackgroundImageChange {
 		this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
 		this.albumTitleContainer.addEventListener('mouseenter', () => this.bgCyclePauseAlbum());
 		this.albumTitleContainer.addEventListener('mouseleave', () => this.bgCycleUnpauseAlbum());
+		this.about.addEventListener('click', () => this.aboutBackground());
 		for (let title of this.albumTitles) {
 			title.addEventListener('mouseenter', (e) => {
 				this.albumPreview(e);
 			});
+		}
+	}
+
+	aboutBackground() {
+		this.body.classList.toggle('about-background');
+		if (this.body.classList.contains('about-background')) {
+			this.bgCyclePause();
+		} else {
+			this.bgCycleUnpause();
 		}
 	}
 
@@ -40,6 +51,11 @@ class BackgroundImageChange {
 			"url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
 	}
 
+	displayPausedBg() {
+		this.body.style.backgroundImage =
+			"url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
+	}
+
 	randomStartImage() {
 		let randomStart = Math.floor(Math.random() * this.totalImages) + 1;
 		this.currentImage = randomStart;
@@ -49,7 +65,7 @@ class BackgroundImageChange {
 	bgCycleStarter() {
 		this.bgCycle = setInterval(() => {
 			this.updateImage();
-		}, 3000);
+		}, 5000);
 	}
 
 	pauseBtnToggle() {
@@ -76,15 +92,19 @@ class BackgroundImageChange {
 		if (!this.pauseBtn.classList.contains('pause-btn--is-paused')) {
 			this.updateImage();
 			this.bgCycleStarter();
-		}
+		} else this.displayPausedBg();
 	}
 
 	bgCycleUnpauseAlbum() {
+		// this.updateImage();
+		// this.bgCycleStarter();
+
+		this.bgCycleUnpause();
 		if (this.body.classList.contains('fast-transition')) {
-			this.body.classList.toggle('fast-transition');
+			setTimeout(() => {
+				this.body.classList.toggle('fast-transition');
+			}, 10);
 		}
-		this.updateImage();
-		this.bgCycleStarter();
 	}
 
 	set currentImage(imageNumber) {

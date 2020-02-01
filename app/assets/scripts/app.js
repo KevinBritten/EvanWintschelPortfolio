@@ -1,10 +1,10 @@
-import '../styles/styles.css'
-import BackgroundImageCycle from './modules/BackgroundImageCycle'
+import '../styles/styles.css';
+import BackgroundImageChange from './modules/BackgroundImageChange';
 
-new BackgroundImageCycle()
+new BackgroundImageChange();
 
-console.log("Hello World from your main file!");
+console.log('Hello World from your main file!');
 
 if (module.hot) {
-    module.hot.accept()
+	module.hot.accept();
 }

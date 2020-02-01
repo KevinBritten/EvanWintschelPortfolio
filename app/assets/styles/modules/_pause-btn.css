@@ -1,0 +1,18 @@
+.pause-btn {
+	font-family: Tahoma;
+	font-size: .6em;
+	border: none;
+	background-color: transparent;
+	color: rgba(100, 100, 100, .5);
+	&--is-paused {
+		color: black;
+	}
+
+	&:hover {
+		color: black;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}

@@ -1,9 +1,9 @@
 import '../styles/styles.css';
 import BackgroundImageChange from './modules/BackgroundImageChange';
+import AboutSection from './modules/AboutSection';
 
 new BackgroundImageChange();
-
-console.log('Hello World from your main file!');
+new AboutSection();
 
 if (module.hot) {
 	module.hot.accept();

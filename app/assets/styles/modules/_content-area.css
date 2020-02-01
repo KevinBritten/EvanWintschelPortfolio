@@ -1,38 +1,38 @@
 .content-area {
-    position: fixed;
-    top: 250px;
-    min-width: 100vw;
+	position: fixed;
+	top: 250px;
+	min-width: 100vw;
 
-    &__box {
-        position: relative;
-        margin-left: auto;
-        margin-right: auto;
-        width: 400px;
-        height: auto;
-        border-style: solid;
-        border-radius: 8px;
-        border-width: 2px;
-        background-color: $whiteTrans;
-    }
+	&__box {
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		width: 400px;
+		height: auto;
+		border-style: solid;
+		border-radius: 8px;
+		border-width: 2px;
+		background-color: $whiteTrans;
+	}
 
-    &__list {
-        list-style: none;
-        padding-inline-start: 0px;
-    }
+	&__list {
+		list-style: none;
+		padding-inline-start: 0px;
+	}
 
-    &__album {
-        font-family: $josefinSans;
-        text-align: center;
-        font-size: 1.5em;
-        /* extra padding on top to compensate for default text vertical position inside element. Center text by default and remove padding if possible. */
-        padding: 12px 0 6px;
+	&__album {
+		font-family: $josefinSans;
+		text-align: center;
+		font-size: 1.5em;
+		/* extra padding on top to compensate for default text vertical position inside element. Center text by default and remove padding if possible. */
+		padding: 12px 0 6px;
+		user-select: none;
+		cursor: pointer;
 
-
-        &:hover {
-            font-size:1.6em;
-            background-color: $graySelect;
-            padding: 11px 0 5px;
-        }
-
-        }
-    }
+		&:hover {
+			font-size: 1.6em;
+			background-color: $graySelect;
+			padding: 11px 0 5px;
+		}
+	}
+}

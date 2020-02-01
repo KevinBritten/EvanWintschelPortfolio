@@ -20,13 +20,11 @@ let cssConfig = {
 
 module.exports = {
 	mode: 'development',
-	entry: [ 'babel-polyfill', './app/assets/scripts/app.js' ],
+	entry: './app/assets/scripts/app.js',
 	output: {
 		publicPath: ''
 	},
-	// "externals": {
-	// 	"fs": "require('fs')",
-	//  },
+
 	devServer: {
 		before: function(app, server) {
 			server._watch('./app/*.html');

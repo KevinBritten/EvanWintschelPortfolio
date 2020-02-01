@@ -5,7 +5,7 @@ class BackgroundImageChange {
 		this.albumTitleContainer = document.querySelector('.content-area__box');
 		this.totalImages = 3; ///determine number of images dynamically
 		this.albumTitles = this.albumTitleContainer.querySelectorAll('.content-area__album');
-		this.about = document.querySelector('#about-button');
+		this.about = document.querySelector('#about-btn');
 		this.randomStartImage();
 		this.initializeAlbumIds();
 		this.events();
@@ -13,7 +13,6 @@ class BackgroundImageChange {
 	}
 
 	events() {
-		console.log(this.bgCycle);
 		this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
 		this.albumTitleContainer.addEventListener('mouseenter', () => this.bgCyclePauseAlbum());
 		this.albumTitleContainer.addEventListener('mouseleave', () => this.bgCycleUnpauseAlbum());

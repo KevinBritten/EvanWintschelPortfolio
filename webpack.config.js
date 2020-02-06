@@ -20,9 +20,34 @@ const postCSSPlugins = [
 class RunAfterCompile {
 	apply(compiler) {
 		compiler.hooks.done.tap('Copy Images', function() {
-			fse.copySync('./app/assets/images', './dist/assets/images');
+			fse.copySync('./app/assets/images', './dist/assets/images'); //copy image directory to dist
+			//make image list file in dist folder
+			const folderDirents = fse.readdirSync('./app/assets/images/albums', { withFileTypes: true });
+			const folders = folderDirents.filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
+			const images = {};
+			folders.forEach((folder, index) => {
+				images[index] = fse
+					.readdirSync(`./app/assets/images/albums/${folder}`)
+					.filter((image) => !image.includes('.DS_Store'));
+			});
+			fse.writeFileSync('./dist/imageList.js', JSON.stringify(images));
 		});
 	}
+	// apply(compiler) {
+	// 	compiler.hooks.done.tap('List Images', function() {
+	// 		// let reader = fse.readdirSync('./app/assets/images/bg-images');
+	// 		// fse.writeFileSync('./app/hi.js', reader);
+	// 		const folderDirents = fse.readdirSync('./app/assets/images/albums', { withFileTypes: true });
+	// 		const folders = folderDirents.filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
+	// 		const images = {};
+	// 		folders.forEach((folder, index) => {
+	// 			images[index] = fse
+	// 				.readdirSync(`./app/assets/images/albums/${folder}`)
+	// 				.filter((image) => !image.includes('.DS_Store'));
+	// 		});
+	// 		fse.writeFileSync('./dist/imageList.js', JSON.stringify(images));
+	// 	});
+	// }
 }
 
 let cssConfig = {

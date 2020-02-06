@@ -1,5 +1,9 @@
+import ImageList from './ImageList.js';
+const imageList = new ImageList();
+
 class BackgroundImageChange {
 	constructor() {
+		this.albumList = imageList.list;
 		this.body = document.body;
 		this.pauseBtn = document.querySelector('#pause');
 		this.albumTitleContainer = document.querySelector('.content-area__box');
@@ -23,6 +27,7 @@ class BackgroundImageChange {
 				this.albumPreview(e);
 			});
 		}
+		console.log(this.albumList);
 	}
 
 	aboutBackground() {

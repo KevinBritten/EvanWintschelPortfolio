@@ -17,11 +17,10 @@ const postCSSPlugins = [
 	require('autoprefixer')
 ];
 
-class RunAfterCompile {
+class RunBeforeCompile {
 	apply(compiler) {
-		compiler.hooks.done.tap('Copy Images', function() {
-			fse.copySync('./app/assets/images', './dist/assets/images'); //copy image directory to dist
-			//make image list file in dist folder
+		//make image list file in dist folder
+		compiler.hooks.beforeRun.tap('Make Image List', function() {
 			const folderDirents = fse.readdirSync('./app/assets/images/albums', { withFileTypes: true });
 			const folders = folderDirents.filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
 			const images = {};
@@ -30,7 +29,21 @@ class RunAfterCompile {
 					.readdirSync(`./app/assets/images/albums/${folder}`)
 					.filter((image) => !image.includes('.DS_Store'));
 			});
-			fse.writeFileSync('./dist/imageList.js', JSON.stringify(images));
+			fse.writeFileSync(
+				'./app/assets/scripts/modules/ImageList.js',
+				`class ImageList{
+						constructor(){
+					this.list = ${JSON.stringify(images)}     }
+				}
+				export default ImageList`
+			);
+		});
+	}
+}
+class RunAfterCompile {
+	apply(compiler) {
+		compiler.hooks.done.tap('Copy Images', function() {
+			fse.copySync('./app/assets/images', './dist/assets/images'); //copy image directory to dist
 		});
 	}
 	// apply(compiler) {
@@ -62,6 +75,7 @@ let cssConfig = {
 let config = {
 	entry: [ 'babel-polyfill', './app/assets/scripts/app.js' ],
 	plugins: [
+		new RunBeforeCompile(),
 		new webpack.ProgressPlugin(),
 
 		new workboxPlugin.GenerateSW({

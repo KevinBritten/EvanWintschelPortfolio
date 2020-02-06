@@ -17,7 +17,6 @@ class BackgroundImageChange {
 	}
 
 	events() {
-		console.log(this.bgCycle);
 		this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
 		this.albumTitleContainer.addEventListener('mouseenter', () => this.bgCyclePauseAlbum());
 		this.albumTitleContainer.addEventListener('mouseleave', () => this.bgCycleUnpauseAlbum());
@@ -27,7 +26,6 @@ class BackgroundImageChange {
 				this.albumPreview(e);
 			});
 		}
-		console.log(this.albumList);
 	}
 
 	aboutBackground() {

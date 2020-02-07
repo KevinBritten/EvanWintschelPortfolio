@@ -46,30 +46,11 @@ class RunAfterCompile {
 			fse.copySync('./app/assets/images', './dist/assets/images'); //copy image directory to dist
 		});
 	}
-	// apply(compiler) {
-	// 	compiler.hooks.done.tap('List Images', function() {
-	// 		// let reader = fse.readdirSync('./app/assets/images/bg-images');
-	// 		// fse.writeFileSync('./app/hi.js', reader);
-	// 		const folderDirents = fse.readdirSync('./app/assets/images/albums', { withFileTypes: true });
-	// 		const folders = folderDirents.filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
-	// 		const images = {};
-	// 		folders.forEach((folder, index) => {
-	// 			images[index] = fse
-	// 				.readdirSync(`./app/assets/images/albums/${folder}`)
-	// 				.filter((image) => !image.includes('.DS_Store'));
-	// 		});
-	// 		fse.writeFileSync('./dist/imageList.js', JSON.stringify(images));
-	// 	});
-	// }
 }
 
 let cssConfig = {
 	test: /\.css$/i,
-	use: [
-		// 'css-loader?url=false',
-		'css-loader',
-		{ loader: 'postcss-loader', options: { plugins: postCSSPlugins } }
-	]
+	use: [ 'css-loader', { loader: 'postcss-loader', options: { plugins: postCSSPlugins } } ]
 };
 
 let config = {
@@ -77,7 +58,6 @@ let config = {
 	plugins: [
 		new RunBeforeCompile(),
 		new webpack.ProgressPlugin(),
-
 		new workboxPlugin.GenerateSW({
 			swDest: 'sw.js',
 			clientsClaim: true,
@@ -91,7 +71,6 @@ let config = {
 	node: {
 		fs: 'empty'
 	},
-
 	module: {
 		rules: [
 			{
@@ -114,25 +93,10 @@ let config = {
 			},
 			cssConfig
 		]
+	},
+	optimization: {
+		minimizer: [ new TerserPlugin() ]
 	}
-
-	// optimization: {
-	// 	minimizer: [ new TerserPlugin() ],
-
-	// 	splitChunks: {
-	// 		cacheGroups: {
-	// 			vendors: {
-	// 				priority: -10,
-	// 				test: /[\\/]node_modules[\\/]/
-	// 			}
-	// 		},
-
-	// 		chunks: 'async',
-	// 		minChunks: 1,
-	// 		minSize: 30000,
-	// 		name: true
-	// 	}
-	// }
 };
 
 if (currentTask === 'dev') {
@@ -161,9 +125,7 @@ if (currentTask === 'build') {
 		chunkFilename: '[name].[chunkhash].js',
 		path: path.resolve(__dirname, 'dist')
 	};
-	config.optimization = {
-		splitChunks: { chunks: 'all' }
-	};
+	config.optimization.splitChunks = { chunks: 'all' };
 	config.plugins.unshift(
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin({ filename: 'styles.[chunkhash].css' }),

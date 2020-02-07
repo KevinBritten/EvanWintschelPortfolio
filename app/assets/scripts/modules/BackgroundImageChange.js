@@ -2,130 +2,134 @@ import ImageList from './ImageList.js';
 const imageList = new ImageList();
 
 class BackgroundImageChange {
-	constructor() {
-		this.albumList = imageList.list;
-		this.body = document.body;
-		this.pauseBtn = document.querySelector('#pause');
-		this.albumTitleContainer = document.querySelector('.content-area__box');
-		this.totalImages = 3; ///determine number of images dynamically
-		this.albumTitles = this.albumTitleContainer.querySelectorAll('.content-area__album');
-		this.about = document.querySelector('#about-btn');
-		this.closeBtn = document.querySelector('.about-overlay__close-button');
-		this.aboutOverlay = document.querySelector('.about-overlay');
-		this.randomStartImage();
-		this.initializeAlbumIds();
-		this.events();
-		this.bgCycleStarter();
-	}
+    constructor() {
+        this.albumList = imageList.list;
+        this.body = document.body;
+        this.pauseBtn = document.querySelector('#pause');
+        this.albumTitleContainer = document.querySelector('.content-area__box');
+        this.totalImages = 3; ///determine number of images dynamically
+        this.albumTitles = this.albumTitleContainer.querySelectorAll('.content-area__album');
+        this.about = document.querySelector('#about-button');
+        this.closeBtn = document.querySelector('.about-overlay__close-button');
+        this.aboutOverlay = document.querySelector('.about-overlay');
+        this.randomStartImage();
+        this.initializeAlbumIds();
+        this.events();
+        this.bgCycleStarter();
+    }
 
-	events() {
-		this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
-		//events for pausing when in album area
-		this.albumTitleContainer.addEventListener('mouseenter', () => this.bgCyclePauseAlbum());
-		this.albumTitleContainer.addEventListener('mouseleave', () => this.bgCycleUnpauseAlbum());
-		//events for pausing when about is open
-		this.about.addEventListener('click', () => this.aboutBackground());
-		this.closeBtn.addEventListener('click', () => this.aboutBackground());
-		//display album previews
-		for (let title of this.albumTitles) {
-			title.addEventListener('mouseenter', (e) => {
-				this.albumPreview(e);
-			});
-		}
-	}
+    events() {
+        this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
+        //events for pausing when in album area
+        this.albumTitleContainer.addEventListener('mouseenter', () => this.bgCyclePauseAlbum());
+        this.albumTitleContainer.addEventListener('mouseleave', () => this.bgCycleUnpauseAlbum());
+        //events for pausing when about is open
+        this.about.addEventListener('click', () => this.aboutBackground());
+        this.closeBtn.addEventListener('click', () => this.aboutBackgroundCloseBtn());
+        //display album previews
+        for (let title of this.albumTitles) {
+            title.addEventListener('mouseenter', (e) => {
+                this.albumPreview(e);
+            });
+        }
+    }
 
-	aboutBackground() {
-		this.body.classList.toggle('about-background');
-		if (this.body.classList.contains('about-background')) {
-			this.bgCyclePause();
-		} else {
-			this.bgCycleUnpause();
-		}
-	}
+    aboutBackground() {
+        this.body.classList.toggle('about-background');
+        if (this.body.classList.contains('about-background')) {
+            this.bgCyclePause();
+        } else {
+            this.bgCycleUnpause();
+        }
+    }
+    aboutBackgroundCloseBtn() {
+        this.body.classList.toggle('about-background');
+    }
 
-	albumPreview(e) {
-		let currentAlbum = e.target.getAttribute('album-id');
-		document.body.style.backgroundImage = "url('./assets/images/bg-images/evman-preview-" + currentAlbum + ".png')";
-	}
 
-	initializeAlbumIds() {
-		for (let i = 0; i < this.albumTitles.length; i++) {
-			this.albumTitles[i].setAttribute('album-id', i + 1);
-		}
-	}
+    albumPreview(e) {
+        let currentAlbum = e.target.getAttribute('album-id');
+        document.body.style.backgroundImage = "url('./assets/images/bg-images/evman-preview-" + currentAlbum + ".png')";
+    }
 
-	updateImage() {
-		this.currentImage++;
-		this.body.style.backgroundImage =
-			"url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
-	}
+    initializeAlbumIds() {
+        for (let i = 0; i < this.albumTitles.length; i++) {
+            this.albumTitles[i].setAttribute('album-id', i + 1);
+        }
+    }
 
-	randomStartImage() {
-		let randomStart = Math.floor(Math.random() * this.totalImages) + 1;
-		this.currentImage = randomStart;
-		this.updateImage();
-	}
+    updateImage() {
+        this.currentImage++;
+        this.body.style.backgroundImage =
+            "url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
+    }
 
-	bgCycleStarter() {
-		this.bgCycle = setInterval(() => {
-			this.updateImage();
-		}, 5000);
-	}
+    randomStartImage() {
+        let randomStart = Math.floor(Math.random() * this.totalImages) + 1;
+        this.currentImage = randomStart;
+        this.updateImage();
+    }
 
-	pauseBtnToggle() {
-		this.pauseBtn.classList.toggle('pause-btn--is-paused');
-		if (this.pauseBtn.classList.contains('pause-btn--is-paused')) {
-			this.bgCyclePause();
-		} else {
-			this.bgCycleUnpause();
-		}
-	}
+    bgCycleStarter() {
+        this.bgCycle = setInterval(() => {
+            this.updateImage();
+        }, 5000);
+    }
 
-	bgCyclePause() {
-		clearInterval(this.bgCycle);
-	}
+    pauseBtnToggle() {
+        this.pauseBtn.classList.toggle('pause-btn--is-paused');
+        if (this.pauseBtn.classList.contains('pause-btn--is-paused')) {
+            this.bgCyclePause();
+        } else {
+            this.bgCycleUnpause();
+        }
+    }
 
-	bgCyclePauseAlbum() {
-		if (!this.body.classList.contains('fast-transition')) {
-			this.body.classList.toggle('fast-transition');
-		}
-		if (!this.aboutOverlay.classList.contains('about-overlay--is-visible')) {
-			this.bgCyclePause();
-		}
-	}
+    bgCyclePause() {
+        clearInterval(this.bgCycle);
+    }
 
-	bgCycleUnpause() {
-		if (!this.pauseBtn.classList.contains('pause-btn--is-paused')) {
-			this.updateImage();
-			this.bgCycleStarter();
-		} else this.displayPausedBg();
-	}
+    bgCyclePauseAlbum() {
+        if (!this.body.classList.contains('fast-transition')) {
+            this.body.classList.toggle('fast-transition');
+        }
+        if (!this.aboutOverlay.classList.contains('about-overlay--is-visible')) {
+            this.bgCyclePause();
+        }
+    }
 
-	displayPausedBg() {
-		this.body.style.backgroundImage =
-			"url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
-	}
+    bgCycleUnpause() {
+        if (!this.pauseBtn.classList.contains('pause-btn--is-paused')) {
+            this.updateImage();
+            this.bgCycleStarter();
+        } else this.displayPausedBg();
+    }
 
-	bgCycleUnpauseAlbum() {
-		if (!this.aboutOverlay.classList.contains('about-overlay--is-visible')) {
-			this.bgCycleUnpause();
-		}
-		if (this.body.classList.contains('fast-transition')) {
-			//to make first image appear instantly once mouse leaves album area
-			setTimeout(() => {
-				this.body.classList.toggle('fast-transition');
-			}, 10);
-		}
-	}
+    displayPausedBg() {
+        this.body.style.backgroundImage =
+            "url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
+    }
 
-	set currentImage(imageNumber) {
-		let imageNumberInRange = imageNumber > this.totalImages ? 1 : imageNumber;
-		this.currentImageIndex = imageNumberInRange;
-	}
+    bgCycleUnpauseAlbum() {
+        if (!this.aboutOverlay.classList.contains('about-overlay--is-visible')) {
+            this.bgCycleUnpause();
+        }
+        if (this.body.classList.contains('fast-transition')) {
+            //to make first image appear instantly once mouse leaves album area
+            setTimeout(() => {
+                this.body.classList.toggle('fast-transition');
+            }, 10);
+        }
+    }
 
-	get currentImage() {
-		return this.currentImageIndex;
-	}
+    set currentImage(imageNumber) {
+        let imageNumberInRange = imageNumber > this.totalImages ? 1 : imageNumber;
+        this.currentImageIndex = imageNumberInRange;
+    }
+
+    get currentImage() {
+        return this.currentImageIndex;
+    }
 }
 
 export default BackgroundImageChange;

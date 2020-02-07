@@ -1,67 +1,58 @@
 .site-header {
-	position: fixed;
-	top: 0px;
-	height: 100px;
-	width: 100vw;
-	display: flex;
-	border-style: solid none;
-	border-width: 3px;
-	justify-content: space-between;
-	background-color: $whiteTrans;
-
-	&__title {
-		font-family: $josefinSans;
-		font-size: 2.375em;
-		padding: 6px 6px 0px;
-		text-align: center;
-		width: 8em;
-		min-width: 8em;
-		height: 100%;
-		letter-spacing: 5px;
-		margin: 0;
-	}
-
-	&__menu-box {
-		width: 20vw;
-		min-width: 200px;
-		min-height: 100%;
-		position: relative;
-
-		&--right {
-		}
-	}
-
-	&__menu-content {
-		font-family: Tahoma;
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		padding-bottom: 5px;
-		cursor: pointer;
-
-		&--right {
-			right: auto;
-			left: 0;
-		}
-	}
-
-	&__social-item {
-		font-family: Tahoma;
-		display: inline;
-		text-align: right;
-		width: 100%;
-		line-height: 1.3em;
-		cursor: pointer;
-	}
-
-	&__social-div {
-		text-align: right;
-		width: 100%;
-		padding: 2px 10px 0;
-	}
-
-	&__social-img {
-		height: 18px;
-		transform: translateY(3px);
-	}
+    position: fixed;
+    top: 0px;
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    border-style: solid none;
+    border-width: 3px;
+    justify-content: space-between;
+    background-color: $whiteTrans;
+    &__title {
+        font-family: $josefinSans;
+        font-size: 2.375em;
+        padding: 6px 6px 0px;
+        text-align: center;
+        width: 8em;
+        min-width: 8em;
+        height: 100%;
+        letter-spacing: 5px;
+        margin: 0;
+    }
+    &__menu-box {
+        width: 20vw;
+        min-width: 200px;
+        min-height: 100%;
+        position: relative;
+        &--right {}
+    }
+    &__menu-content {
+        font-family: $tahoma;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding-bottom: 5px;
+        cursor: pointer;
+        &--right {
+            right: auto;
+            left: 0;
+        }
+    }
+    &__social-item {
+        font-family: $tahoma;
+        display: inline;
+        text-align: right;
+        width: 100%;
+        line-height: 1.3em;
+        cursor: pointer;
+    }
+    &__social-div {
+        text-align: right;
+        width: 100%;
+        padding: 2px 10px 0;
+    }
+    &__social-img {
+        height: 18px;
+        transform: translateY(3px);
+    }
 }

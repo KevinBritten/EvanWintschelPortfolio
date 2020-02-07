@@ -18,6 +18,11 @@
 	&__list {
 		list-style: none;
 		padding-inline-start: 0px;
+
+		&--is-hidden {
+			display: none;
+			transition: display 1s;
+		}
 	}
 
 	&__album {

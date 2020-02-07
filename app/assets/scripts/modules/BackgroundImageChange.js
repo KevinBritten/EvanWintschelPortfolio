@@ -9,7 +9,9 @@ class BackgroundImageChange {
 		this.albumTitleContainer = document.querySelector('.content-area__box');
 		this.totalImages = 3; ///determine number of images dynamically
 		this.albumTitles = this.albumTitleContainer.querySelectorAll('.content-area__album');
-		this.about = document.querySelector('#about-button');
+		this.about = document.querySelector('#about-btn');
+		this.closeBtn = document.querySelector('.about-overlay__close-button');
+		this.aboutOverlay = document.querySelector('.about-overlay');
 		this.randomStartImage();
 		this.initializeAlbumIds();
 		this.events();
@@ -18,9 +20,13 @@ class BackgroundImageChange {
 
 	events() {
 		this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
+		//events for pausing when in album area
 		this.albumTitleContainer.addEventListener('mouseenter', () => this.bgCyclePauseAlbum());
 		this.albumTitleContainer.addEventListener('mouseleave', () => this.bgCycleUnpauseAlbum());
+		//events for pausing when about is open
 		this.about.addEventListener('click', () => this.aboutBackground());
+		this.closeBtn.addEventListener('click', () => this.aboutBackground());
+		//display album previews
 		for (let title of this.albumTitles) {
 			title.addEventListener('mouseenter', (e) => {
 				this.albumPreview(e);
@@ -54,11 +60,6 @@ class BackgroundImageChange {
 			"url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
 	}
 
-	displayPausedBg() {
-		this.body.style.backgroundImage =
-			"url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
-	}
-
 	randomStartImage() {
 		let randomStart = Math.floor(Math.random() * this.totalImages) + 1;
 		this.currentImage = randomStart;
@@ -88,7 +89,9 @@ class BackgroundImageChange {
 		if (!this.body.classList.contains('fast-transition')) {
 			this.body.classList.toggle('fast-transition');
 		}
-		this.bgCyclePause();
+		if (!this.aboutOverlay.classList.contains('about-overlay--is-visible')) {
+			this.bgCyclePause();
+		}
 	}
 
 	bgCycleUnpause() {
@@ -98,12 +101,17 @@ class BackgroundImageChange {
 		} else this.displayPausedBg();
 	}
 
-	bgCycleUnpauseAlbum() {
-		// this.updateImage();
-		// this.bgCycleStarter();
+	displayPausedBg() {
+		this.body.style.backgroundImage =
+			"url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
+	}
 
-		this.bgCycleUnpause();
+	bgCycleUnpauseAlbum() {
+		if (!this.aboutOverlay.classList.contains('about-overlay--is-visible')) {
+			this.bgCycleUnpause();
+		}
 		if (this.body.classList.contains('fast-transition')) {
+			//to make first image appear instantly once mouse leaves album area
 			setTimeout(() => {
 				this.body.classList.toggle('fast-transition');
 			}, 10);

@@ -32,6 +32,8 @@ dwsync.xml
 # Temp Images Folder
 
 /app/assets/images/albums/
+/app/assets/images/bg-images/
+
 # Dist Folder
 /dist/**
 /dist

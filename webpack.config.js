@@ -79,7 +79,7 @@ let config = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.png$/,
+                test: /\.(png|jpg)$/,
                 include: [path.resolve(__dirname, 'app/assets/images/bg-images')],
                 use: [{
                     loader: 'url-loader',

@@ -5,8 +5,8 @@ class BackgroundImageChange {
     constructor() {
         this.albumList = imageList.list;
         this.body = document.body;
-        this.pauseBtn = document.querySelector('#pause');
-        this.albumTitleContainer = document.querySelector('.content-area__box');
+        this.pauseBtn = document.querySelector('.pause-btn');
+        this.albumTitleContainer = document.querySelector('.content-area__list');
         this.totalImages = 3; ///determine number of images dynamically
         this.albumTitles = this.albumTitleContainer.querySelectorAll('.content-area__album');
         this.about = document.querySelector('#about-button');
@@ -38,14 +38,15 @@ class BackgroundImageChange {
         this.body.classList.toggle('about-background');
         if (this.body.classList.contains('about-background')) {
             this.bgCyclePause();
+            this.body.style.backgroundImage = "url('./assets/images/bg-images/about-background.jpg')";
         } else {
             this.bgCycleUnpause();
         }
     }
     aboutBackgroundCloseBtn() {
         this.body.classList.toggle('about-background');
+        this.bgCycleUnpause();
     }
-
 
     albumPreview(e) {
         let currentAlbum = e.target.getAttribute('album-id');

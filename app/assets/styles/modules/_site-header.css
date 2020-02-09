@@ -58,9 +58,6 @@
         padding-top: 3px;
         transition: opacity 1s;
         display: none;
-        &--is-visible {
-            display: block;
-        }
     }
     &__social-div {
         text-align: right;

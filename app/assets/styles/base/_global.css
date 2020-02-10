@@ -1,6 +1,5 @@
 body {
-    min-height: 800px;
-    height: 100vh;
+    position: relative;
     overflow: hidden;
     background-size: 100vw 100%;
     background-repeat: no-repeat;

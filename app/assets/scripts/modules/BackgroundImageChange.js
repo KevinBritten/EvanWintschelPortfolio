@@ -135,7 +135,7 @@ class BackgroundImageChange {
             //to make first image appear instantly once mouse leaves album area
             setTimeout(() => {
                 this.body.classList.toggle('fast-transition');
-            }, 10);
+            }, 100);
         }
     }
     set currentImage(imageNumber) {

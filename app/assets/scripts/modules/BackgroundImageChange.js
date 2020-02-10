@@ -12,6 +12,7 @@ class BackgroundImageChange {
         this.about = document.querySelector('#about-button');
         this.closeBtn = document.querySelector('.about-overlay__close-button');
         this.aboutOverlay = document.querySelector('.about-overlay');
+        this.loadedImages = [];
         this.randomStartImage();
         this.initializeAlbumIds();
         this.events();
@@ -38,7 +39,7 @@ class BackgroundImageChange {
         this.body.classList.toggle('about-background');
         if (this.body.classList.contains('about-background')) {
             this.bgCyclePause();
-            this.body.style.backgroundImage = "url('./assets/images/bg-images/about-background.jpg')";
+            this.imageLoader('./assets/images/bg-images/about-background.jpg');
         } else {
             this.bgCycleUnpause();
         }
@@ -50,7 +51,7 @@ class BackgroundImageChange {
 
     albumPreview(e) {
         let currentAlbum = e.target.getAttribute('album-id');
-        document.body.style.backgroundImage = "url('./assets/images/bg-images/evman-preview-" + currentAlbum + ".png')";
+        this.imageLoader(`./assets/images/bg-images/evman-preview-${currentAlbum}.png`);
     }
 
     initializeAlbumIds() {
@@ -61,8 +62,23 @@ class BackgroundImageChange {
 
     updateImage() {
         this.currentImage++;
-        this.body.style.backgroundImage =
-            "url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
+        this.imageLoader(`./assets/images/bg-images/evman-album-${this.currentImageIndex}.png`);
+    }
+
+    imageLoader(url) {
+        if (!this.loadedImages.includes(url)) {
+            var img = new Image();
+            console.log(img);
+            img.src = url;
+            console.log('loaded');
+            img.onload = () => {
+                this.body.style.backgroundImage = "url('" + url + "')";
+            };
+            this.loadedImages.push(url);
+        } else {
+            console.log(this.loadedImages);
+            this.body.style.backgroundImage = "url('" + url + "')";
+        }
     }
 
     randomStartImage() {
@@ -122,7 +138,6 @@ class BackgroundImageChange {
             }, 10);
         }
     }
-
     set currentImage(imageNumber) {
         let imageNumberInRange = imageNumber > this.totalImages ? 1 : imageNumber;
         this.currentImageIndex = imageNumberInRange;

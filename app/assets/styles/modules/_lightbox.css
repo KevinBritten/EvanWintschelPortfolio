@@ -55,6 +55,9 @@
         display: inline-block;
         width: auto;
         height: 100%;
+        //border-style: solid;
+        //border-color: white;
+        //border-width: 10px 100px;
     }
     &__current-image {
         height: 100%;

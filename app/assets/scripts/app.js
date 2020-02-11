@@ -3,7 +3,9 @@ import BackgroundImageChange from './modules/BackgroundImageChange';
 import AboutSection from './modules/AboutSection';
 import SetPageDimensions from './modules/SetPageDimensions';
 import EmailCopy from './modules/EmailCopy';
+import Lightbox from './modules/Lightbox';
 
+new Lightbox();
 new BackgroundImageChange();
 new AboutSection();
 new SetPageDimensions();

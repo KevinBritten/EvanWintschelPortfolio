@@ -24,8 +24,8 @@ class RunBeforeCompile {
             const folderDirents = fse.readdirSync('./app/assets/images/albums', { withFileTypes: true });
             const folders = folderDirents.filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
             const images = {};
-            folders.forEach((folder, index) => {
-                images[index] = fse
+            folders.forEach((folder) => {
+                images[folder] = fse
                     .readdirSync(`./app/assets/images/albums/${folder}`)
                     .filter((image) => !image.includes('.DS_Store'));
             });

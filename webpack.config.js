@@ -24,10 +24,12 @@ class RunBeforeCompile {
             const folderDirents = fse.readdirSync('./app/assets/images/albums', { withFileTypes: true });
             const folders = folderDirents.filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
             const images = {};
+            let albumListHtml = '';
             folders.forEach((folder) => {
                 images[folder] = fse
                     .readdirSync(`./app/assets/images/albums/${folder}`)
                     .filter((image) => !image.includes('.DS_Store'));
+                albumListHtml += `<li class="content-area__album">${folder}</li>`;
             });
             fse.writeFileSync(
                 './app/assets/scripts/modules/ImageList.js',
@@ -37,6 +39,8 @@ class RunBeforeCompile {
 				}
 				export default ImageList`
             );
+
+            fse.writeFileSync('./app/html-modules/_album-list.ejs', albumListHtml);
         });
     }
 }
@@ -65,7 +69,7 @@ let config = {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: './app/index.html'
+            template: './app/index.ejs'
         })
     ],
     node: {
@@ -88,7 +92,8 @@ let config = {
                     }
                 }]
             },
-            cssConfig
+            cssConfig,
+            { test: /\.ejs$/, use: 'ejs-compiled-loader' }
         ]
     },
     optimization: {
@@ -101,7 +106,7 @@ if (currentTask === 'dev') {
     config.mode = 'development';
     config.devServer = {
         before: function(app, server) {
-            server._watch('./app/*.html');
+            server._watch('./app/*.ejs');
         },
         contentBase: path.join(__dirname, 'app'),
         hot: true,

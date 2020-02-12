@@ -14,7 +14,7 @@ class BackgroundImageChange {
         this.aboutOverlay = document.querySelector('.about-overlay');
         this.loadedImages = [];
         this.randomStartImage();
-        this.initializeAlbumIds();
+        // this.initializeAlbumIds();
         this.events();
         this.bgCycleStarter();
     }
@@ -50,15 +50,17 @@ class BackgroundImageChange {
     }
 
     albumPreview(e) {
-        let currentAlbum = e.target.getAttribute('album-id');
-        this.imageLoader(`./assets/images/bg-images/evman-preview-${currentAlbum}.png`);
+        let currentAlbum = e.target.innerText;
+        console.log(currentAlbum);
+        let randomIndex = Math.floor(Math.random() * this.albumList[`${currentAlbum}`].length);
+        this.imageLoader(`${this.albumList.currentAlbum[randomIndex]}`);
     }
 
-    initializeAlbumIds() {
-        for (let i = 0; i < this.albumTitles.length; i++) {
-            this.albumTitles[i].setAttribute('album-id', i + 1);
-        }
-    }
+    // initializeAlbumIds() {
+    //     for (let i = 0; i < this.albumTitles.length; i++) {
+    //         this.albumTitles[i].setAttribute('album-id', i + 1);
+    //     }
+    // }
 
     updateImage() {
         this.currentImage++;

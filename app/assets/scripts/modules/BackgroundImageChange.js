@@ -92,7 +92,7 @@ class BackgroundImageChange {
         this.pauseBtn.classList.toggle('pause-btn--is-paused');
         if (this.pauseBtn.classList.contains('pause-btn--is-paused')) {
             this.bgCyclePause();
-        } else {
+        } else if (!document.body.classList.contains('about-background')) {
             this.bgCycleUnpause();
         }
     }
@@ -109,7 +109,6 @@ class BackgroundImageChange {
     }
 
     displayPausedBg() {
-        console.log('hi');
         document.body.style.backgroundImage = `url(${this.bgImageList[this.currentImageIndex]})`;
     }
 

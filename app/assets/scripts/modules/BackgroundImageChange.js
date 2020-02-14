@@ -5,9 +5,8 @@ class BackgroundImageChange {
     constructor() {
         this.albumList = imageList.list;
         this.pauseBtn = document.querySelector('.pause-btn');
-        this.bgImageList = [];
         this.bgImageListCreator();
-        console.log(this.bgImageList);
+        this.bgImageListRandomizer();
         this.totalImages = this.bgImageList.length;
         this.about = document.querySelector('#about-button');
         this.closeBtn = document.querySelector('.about-overlay__close-button');
@@ -25,6 +24,7 @@ class BackgroundImageChange {
     }
 
     bgImageListCreator() {
+        this.bgImageList = [];
         let keys = Object.keys(this.albumList);
         for (let key of keys) {
             this.albumList[key].map((image) => {
@@ -32,6 +32,14 @@ class BackgroundImageChange {
                     this.bgImageList.push(`./assets/images/albums/${key}/${image}`);
                 }
             });
+        }
+    }
+
+    bgImageListRandomizer() {
+        let array = this.bgImageList;
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
     }
     aboutBackground() {
@@ -101,6 +109,7 @@ class BackgroundImageChange {
     }
 
     displayPausedBg() {
+        console.log('hi');
         document.body.style.backgroundImage = `url(${this.bgImageList[this.currentImageIndex]})`;
     }
 

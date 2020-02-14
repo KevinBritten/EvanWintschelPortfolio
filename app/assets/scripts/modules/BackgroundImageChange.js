@@ -5,7 +5,10 @@ class BackgroundImageChange {
     constructor() {
         this.albumList = imageList.list;
         this.pauseBtn = document.querySelector('.pause-btn');
-        this.totalImages = 3; ///determine number of images dynamically
+        this.bgImageList = [];
+        this.bgImageListCreator();
+        console.log(this.bgImageList);
+        this.totalImages = this.bgImageList.length;
         this.about = document.querySelector('#about-button');
         this.closeBtn = document.querySelector('.about-overlay__close-button');
         this.aboutOverlay = document.querySelector('.about-overlay');
@@ -21,6 +24,16 @@ class BackgroundImageChange {
         this.closeBtn.addEventListener('click', () => this.aboutBackgroundCloseBtn());
     }
 
+    bgImageListCreator() {
+        let keys = Object.keys(this.albumList);
+        for (let key of keys) {
+            this.albumList[key].map((image) => {
+                if (image.includes('-bg')) {
+                    this.bgImageList.push(`./assets/images/albums/${key}/${image}`);
+                }
+            });
+        }
+    }
     aboutBackground() {
         document.body.classList.toggle('about-background');
         if (document.body.classList.contains('about-background')) {
@@ -37,15 +50,19 @@ class BackgroundImageChange {
 
     updateImage() {
         this.currentImage++;
-        this.imageLoader(`./assets/images/bg-images/evman-album-${this.currentImageIndex}.png`);
+        this.imageLoader(this.bgImageList[this.currentImageIndex]);
+        console.log(this.bgImageList[this.currentImageIndex]);
     }
 
     imageLoader(url) {
         if (!this.loadedImages.includes(url)) {
             var img = new Image();
-            document.body.style.backgroundImage = `url('${url}')`;
+            img.onload = function() {
+                document.body.style.backgroundImage = `url('${url}')`;
+            };
             img.src = url;
             this.loadedImages.push(url);
+            console.log('hi');
         } else {
             document.body.style.backgroundImage = `url('${url}')`;
         }
@@ -60,7 +77,7 @@ class BackgroundImageChange {
     bgCycleStarter() {
         this.bgCycle = setInterval(() => {
             this.updateImage();
-        }, 5000);
+        }, 7000);
     }
 
     pauseBtnToggle() {
@@ -84,12 +101,11 @@ class BackgroundImageChange {
     }
 
     displayPausedBg() {
-        document.body.style.backgroundImage =
-            "url('./assets/images/bg-images/evman-album-" + this.currentImageIndex + ".png')";
+        document.body.style.backgroundImage = `url(${this.bgImageList[this.currentImageIndex]})`;
     }
 
     set currentImage(imageNumber) {
-        let imageNumberInRange = imageNumber > this.totalImages ? 1 : imageNumber;
+        let imageNumberInRange = imageNumber > this.totalImages - 1 ? 0 : imageNumber;
         this.currentImageIndex = imageNumberInRange;
     }
 

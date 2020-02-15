@@ -12,6 +12,12 @@ class BackgroundImageChange {
         this.closeBtn = document.querySelector('.about-overlay__close-button');
         this.aboutOverlay = document.querySelector('.about-overlay');
         this.loadedImages = [];
+        this.aboutBackgroundEscape = function() {
+            if (event.keyCode === 27) {
+                this.aboutBackground();
+            }
+        };
+        this.aboutBackgroundEscapeBinded = this.aboutBackgroundEscape.bind(this);
         this.randomStartImage();
         this.events();
         this.bgCycleStarter();
@@ -20,7 +26,8 @@ class BackgroundImageChange {
     events() {
         this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
         this.about.addEventListener('click', () => this.aboutBackground());
-        this.closeBtn.addEventListener('click', () => this.aboutBackgroundCloseBtn());
+        this.closeBtn.addEventListener('click', () => this.aboutBackground());
+        // this.closeBtn.addEventListener('click', () => this.aboutBackgroundCloseBtn());
     }
 
     bgImageListCreator() {
@@ -42,15 +49,19 @@ class BackgroundImageChange {
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
+
     aboutBackground() {
         document.body.classList.toggle('about-background');
         if (document.body.classList.contains('about-background')) {
+            document.addEventListener('keydown', this.aboutBackgroundEscapeBinded);
             this.bgCyclePause();
             this.imageLoader('./assets/images/bg-images/about-background.jpg');
         } else {
+            document.removeEventListener('keydown', this.aboutBackgroundEscapeBinded);
             this.bgCycleUnpause();
         }
     }
+
     aboutBackgroundCloseBtn() {
         document.body.classList.toggle('about-background');
         this.bgCycleUnpause();

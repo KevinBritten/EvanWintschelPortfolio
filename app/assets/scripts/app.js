@@ -2,7 +2,7 @@ import '../styles/styles.css';
 import AlbumPopulator from './modules/AlbumPopulator';
 import BackgroundImageChange from './modules/BackgroundImageChange';
 import AboutSection from './modules/AboutSection';
-import SetPageDimensions from './modules/SetPageDimensions';
+import PageSetup from './modules/PageSetup';
 import EmailCopy from './modules/EmailCopy';
 import Lightbox from './modules/Lightbox';
 
@@ -10,7 +10,7 @@ import Lightbox from './modules/Lightbox';
 new Lightbox();
 new BackgroundImageChange();
 new AboutSection();
-new SetPageDimensions();
+new PageSetup();
 new EmailCopy();
 
 if (module.hot) {

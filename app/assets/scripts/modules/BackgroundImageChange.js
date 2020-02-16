@@ -27,7 +27,6 @@ class BackgroundImageChange {
         this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
         this.about.addEventListener('click', () => this.aboutBackground());
         this.closeBtn.addEventListener('click', () => this.aboutBackground());
-        // this.closeBtn.addEventListener('click', () => this.aboutBackgroundCloseBtn());
     }
 
     bgImageListCreator() {
@@ -52,13 +51,16 @@ class BackgroundImageChange {
 
     aboutBackground() {
         document.body.classList.toggle('about-background');
+
         if (document.body.classList.contains('about-background')) {
+            document.body.classList.toggle('fast-transition');
             document.addEventListener('keydown', this.aboutBackgroundEscapeBinded);
             this.bgCyclePause();
             this.imageLoader('./assets/images/bg-images/about-background.jpg');
         } else {
             document.removeEventListener('keydown', this.aboutBackgroundEscapeBinded);
             this.bgCycleUnpause();
+            setTimeout(() => document.body.classList.toggle('fast-transition'), 50);
         }
     }
 

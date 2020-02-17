@@ -7,7 +7,9 @@ class AboutSection {
         this.aboutOverlay = document.querySelector('.about-overlay');
         this.albumsList = document.querySelector('.content-area__list');
         this.aboutEscape = function() {
-            this.toggleAboutSection();
+            if (event.keyCode === 27) {
+                this.toggleAboutSection();
+            }
         };
         this.aboutEscapeBinded = this.aboutEscape.bind(this);
         this.events();

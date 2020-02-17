@@ -51,7 +51,6 @@ class BackgroundImageChange {
 
     aboutBackground() {
         document.body.classList.toggle('about-background');
-
         if (document.body.classList.contains('about-background')) {
             document.body.classList.toggle('fast-transition');
             document.addEventListener('keydown', this.aboutBackgroundEscapeBinded);
@@ -76,17 +75,11 @@ class BackgroundImageChange {
     }
 
     imageLoader(url) {
-        if (!this.loadedImages.includes(url)) {
-            var img = new Image();
-            img.onload = function() {
-                document.body.style.backgroundImage = `url('${url}')`;
-            };
-            img.src = url;
-            this.loadedImages.push(url);
-            console.log('hi');
-        } else {
+        var img = new Image();
+        img.onload = function() {
             document.body.style.backgroundImage = `url('${url}')`;
-        }
+        };
+        img.src = url;
     }
 
     randomStartImage() {

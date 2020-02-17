@@ -63,7 +63,7 @@
         height: 96%;
     }
     &__description {
-        padding-top: 2px;
+        padding-top: 4px;
         display: block;
     }
     &__image-number {

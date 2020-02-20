@@ -81,11 +81,17 @@
         left: 10px;
     }
     &__thumbnail-container {
+        opacity: 0;
         margin: 2% auto 0;
         height: 15%;
         width: 90%;
         display: flex;
         justify-content: center;
+        transition: none;
+        &--is-visible {
+            transition: opacity .2s ease-in;
+            opacity: 1;
+        }
     }
     &__thumbnail {
         margin: 0 10px;

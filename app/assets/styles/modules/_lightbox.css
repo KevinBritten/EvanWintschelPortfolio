@@ -63,9 +63,11 @@
         display: inline-block;
         width: auto;
         height: 100%;
-        //border-style: solid;
-        //border-color: white;
-        //border-width: 10px 100px;
+        opacity: 0;
+        &--is-visible {
+            transition: opacity .2s ease-in;
+            opacity: 1;
+        }
     }
     &__current-image {
         height: 96%;
@@ -94,8 +96,12 @@
         }
     }
     &__thumbnail {
+        opacity: .5;
         margin: 0 10px;
         height: 100%;
         cursor: pointer;
+        &--is-current {
+            opacity: 1;
+        }
     }
 }

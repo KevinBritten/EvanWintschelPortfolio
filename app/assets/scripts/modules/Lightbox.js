@@ -11,12 +11,15 @@ class Lightbox {
         this.currentImage = this.lightbox.querySelector('.lightbox__current-image');
         this.imageDescription = this.lightbox.querySelector('.lightbox__description');
         this.slideArea = this.lightbox.querySelector('.lightbox__current-slide');
+        this.contentDiv = this.lightbox.querySelector('.lightbox__content');
         this.nextSlidebutton = this.lightbox.querySelector('.lightbox__nav--next');
         this.previousSlidebutton = this.lightbox.querySelector('.lightbox__nav--previous');
+        this.slideScrollBinded = this.slideScroll.bind(this);
         this.lightboxEscapeBinded = this.lightboxEscape.bind(this);
         this.thumbnailWatcherFunctionBinded = this.thumbnailWatcherFunction.bind(this);
         this.thumbnailWatcher = new MutationObserver(this.thumbnailWatcherFunctionBinded);
         this.thumbnailWatcher.observe(this.thumbnailArea, { childList: true });
+
         this.events();
     }
 
@@ -29,6 +32,17 @@ class Lightbox {
         this.closeButton.addEventListener('click', () => this.closeLightbox());
         this.nextSlidebutton.addEventListener('click', () => this.slideScroll(1));
         this.previousSlidebutton.addEventListener('click', () => this.slideScroll(-1));
+        this.lightbox.addEventListener('click', () => this.closeLightbox(), false);
+        this.contentDiv.addEventListener('click', () => this.closeLightbox(), false);
+        window.addEventListener('keydown', () => this.slideScrollKey());
+    }
+
+    slideScrollKey() {
+        if (event.keyCode === 39) {
+            this.slideScroll(1);
+        } else if (event.keyCode === 37) {
+            this.slideScroll(-1);
+        }
     }
 
     slideScroll(direction) {
@@ -129,6 +143,11 @@ class Lightbox {
     }
 
     closeLightbox() {
+        console.log(event.currentTarget, 'cur');
+        console.log(event.target);
+        if (event.currentTarget !== event.target) {
+            return;
+        }
         this.lightbox.classList.remove('lightbox--is-visible');
 
         setTimeout(() => {

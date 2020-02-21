@@ -11,12 +11,21 @@ class BackgroundImageChange {
         this.about = document.querySelector('#about-button');
         this.closeBtn = document.querySelector('.about-overlay__close-button');
         this.aboutOverlay = document.querySelector('.about-overlay');
+        this.albumArea = document.querySelector('.content-area__list');
+        this.lightbox = document.querySelector('.lightbox');
         this.loadedImages = [];
+        this.lightboxBackgroundEscape = function() {
+            if (event.keyCode === 27) {
+                this.lightboxBackgroundClose();
+            }
+        };
+        this.aboutLightboxEscapeBinded = this.lightboxBackgroundEscape.bind(this);
         this.aboutBackgroundEscape = function() {
             if (event.keyCode === 27) {
                 this.aboutBackground();
             }
         };
+
         this.aboutBackgroundEscapeBinded = this.aboutBackgroundEscape.bind(this);
         this.randomStartImage();
         this.events();
@@ -27,6 +36,7 @@ class BackgroundImageChange {
         this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
         this.about.addEventListener('click', () => this.aboutBackground());
         this.closeBtn.addEventListener('click', () => this.aboutBackground());
+        this.albumArea.addEventListener('click', () => this.lightboxBackground());
     }
 
     bgImageListCreator() {
@@ -63,6 +73,16 @@ class BackgroundImageChange {
         }
     }
 
+    lightboxBackground() {
+        document.addEventListener('keydown', () => this.lightboxBackgroundEscape());
+        this.bgCyclePause();
+    }
+
+    lightboxBackgroundClose() {
+        document.removeEventListener('keydown', () => this.lightboxBackgroundEscape());
+        this.bgCycleStarter();
+    }
+
     aboutBackgroundCloseBtn() {
         document.body.classList.toggle('about-background');
         this.bgCycleUnpause();
@@ -71,7 +91,6 @@ class BackgroundImageChange {
     updateImage() {
         this.currentImage++;
         this.imageLoader(this.bgImageList[this.currentImageIndex]);
-        console.log(this.bgImageList[this.currentImageIndex]);
     }
 
     imageLoader(url) {

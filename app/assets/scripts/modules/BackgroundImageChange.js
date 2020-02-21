@@ -16,10 +16,11 @@ class BackgroundImageChange {
         this.lightboxCloseButton = this.lightbox.querySelector('.lightbox__close-button');
         this.lightboxBackgroundEscape = function() {
             if (event.keyCode === 27) {
+                console.log('melskf');
                 this.lightboxBackgroundClose();
             }
         };
-        this.aboutLightboxEscapeBinded = this.lightboxBackgroundEscape.bind(this);
+        this.lightboxBackgroundEscapeBinded = this.lightboxBackgroundEscape.bind(this);
         this.aboutBackgroundEscape = function() {
             if (event.keyCode === 27) {
                 this.aboutBackground();
@@ -75,12 +76,12 @@ class BackgroundImageChange {
     }
 
     lightboxBackground() {
-        document.addEventListener('keydown', () => this.lightboxBackgroundEscape());
+        window.addEventListener('keydown', this.lightboxBackgroundEscapeBinded);
         this.bgCyclePause();
     }
 
     lightboxBackgroundClose() {
-        document.removeEventListener('keydown', () => this.lightboxBackgroundEscape());
+        window.removeEventListener('keydown', this.lightboxBackgroundEscapeBinded);
         this.bgCycleStarter();
     }
 

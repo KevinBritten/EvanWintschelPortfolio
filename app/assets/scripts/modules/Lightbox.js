@@ -8,16 +8,12 @@ class Lightbox {
         this.lightbox = document.querySelector('.lightbox');
         this.closeButton = this.lightbox.querySelector('.lightbox__close-button');
         this.thumbnailArea = this.lightbox.querySelector('.lightbox__thumbnail-container');
-        this.lightboxEscape = function() {
-            if (event.keyCode === 27) {
-                this.closeLightbox();
-            }
-        };
+        this.currentImage = document.querySelector('.lightbox__current-image');
         this.lightboxEscapeBinded = this.lightboxEscape.bind(this);
-        this.events();
         this.thumbnailWatcherFunctionBinded = this.thumbnailWatcherFunction.bind(this);
         this.thumbnailWatcher = new MutationObserver(this.thumbnailWatcherFunctionBinded);
         this.thumbnailWatcher.observe(this.thumbnailArea, { childList: true });
+        this.events();
     }
 
     events() {
@@ -42,20 +38,41 @@ class Lightbox {
         this.lightbox.classList.add('lightbox--is-visible', 'lightbox--is-above');
         window.addEventListener('keydown', this.lightboxEscapeBinded);
         this.createThumbnails(this.currentAlbum);
+        this.displayCurrentImage(this.currentAlbum);
+    }
+
+    displayCurrentImage(currentAlbum, currentImage = 0) {
+        let url = `./assets/images/albums/${currentAlbum}/${this.list[currentAlbum][currentImage]}`;
+        this.currentImage.src = url;
     }
     createThumbnails(currentAlbum) {
         for (let i = 0; i < this.list[currentAlbum].length; i++) {
             let url = `./assets/images/albums/${currentAlbum}/${this.list[currentAlbum][i]}`;
             let newThumbnail = new Image();
             newThumbnail.classList.add('lightbox__thumbnail');
+            newThumbnail.setAttribute('slide-id', i);
             newThumbnail.onload = () => {
-                this.thumbnailArea.appendChild(newThumbnail);
-                newThumbnail.setAttribute('slide-id', this.thumbnailArea.childElementCount);
+                console.log(this.thumbnailArea.children);
+                if (this.thumbnailArea.children.length === 0) {
+                    this.thumbnailArea.appendChild(newThumbnail);
+                } else {
+                    for (let thumbnail of this.thumbnailArea.children) {
+                        // console.log(thumbnail);
+                        if (newThumbnail.getAttribute('slide-id') < thumbnail.getAttribute('slide-id')) {
+                            thumbnail.before(newThumbnail);
+                            return;
+                        } else {
+                            this.thumbnailArea.appendChild(newThumbnail);
+                        }
+                    }
+                    // this.thumbnailArea.appendChild(newThumbnail);
+                    // newThumbnail.setAttribute('slide-id', this.thumbnailArea.childElementCount);
+                }
             };
-
             newThumbnail.src = url;
+
+            // this.thumbnailArea.classList.add('lightbox__thumbnail-container--is-visible', );
         }
-        // this.thumbnailArea.classList.add('lightbox__thumbnail-container--is-visible', );
     }
 
     removeThumnails() {
@@ -69,6 +86,12 @@ class Lightbox {
             this.removeThumnails();
         }, 500); //set timeout length equal to opactiy transition time in _lightbox.css
         window.removeEventListener('keydown', this.lightboxEscapeBinded);
+    }
+
+    lightboxEscape() {
+        if (event.keyCode === 27) {
+            this.closeLightbox();
+        }
     }
 
     set currentAlbum(album) {

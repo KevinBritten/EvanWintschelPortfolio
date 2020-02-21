@@ -13,7 +13,7 @@ class BackgroundImageChange {
         this.aboutOverlay = document.querySelector('.about-overlay');
         this.albumArea = document.querySelector('.content-area__list');
         this.lightbox = document.querySelector('.lightbox');
-        this.loadedImages = [];
+        this.lightboxCloseButton = this.lightbox.querySelector('.lightbox__close-button');
         this.lightboxBackgroundEscape = function() {
             if (event.keyCode === 27) {
                 this.lightboxBackgroundClose();
@@ -37,6 +37,7 @@ class BackgroundImageChange {
         this.about.addEventListener('click', () => this.aboutBackground());
         this.closeBtn.addEventListener('click', () => this.aboutBackground());
         this.albumArea.addEventListener('click', () => this.lightboxBackground());
+        this.lightboxCloseButton.addEventListener('click', () => this.lightboxBackgroundClose());
     }
 
     bgImageListCreator() {

@@ -20,7 +20,6 @@ class EmailCopy {
 
     setTimers() {
         this.opactiyTimer = setTimeout(() => {
-            console.log('d');
             this.alert.style.opacity = '0';
         }, 1000);
         this.displayTimer = setTimeout(() => (this.alert.style.display = 'none'), 2000);

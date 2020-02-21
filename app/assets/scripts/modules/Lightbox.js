@@ -30,8 +30,6 @@ class Lightbox {
     }
 
     thumbnailWatcherFunction(mutation) {
-        console.log(mutation[0].target.childElementCount);
-        console.log(this.list[this.currentAlbum].length);
         if (this.list[this.currentAlbum].length === mutation[0].target.childElementCount) {
             mutation[0].target.classList.add('lightbox__thumbnail-container--is-visible');
         } else if (mutation[0].target.childElementCount === 0) {
@@ -41,7 +39,6 @@ class Lightbox {
 
     openLightbox(e) {
         this.currentAlbum = e.target.innerText;
-        console.log(this.currentAlbum);
         this.lightbox.classList.add('lightbox--is-visible', 'lightbox--is-above');
         window.addEventListener('keydown', this.lightboxEscapeBinded);
         this.createThumbnails(this.currentAlbum);

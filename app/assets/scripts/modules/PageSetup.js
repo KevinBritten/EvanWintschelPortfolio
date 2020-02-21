@@ -1,6 +1,5 @@
 class PageSetup {
     constructor() {
-        console.log(window.screen.height);
         this.setDimensions();
         window.onload = this.pageOpacity;
     }

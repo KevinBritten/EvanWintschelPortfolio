@@ -79,7 +79,7 @@ class Lightbox {
     openLightbox(e) {
         this.currentAlbum = e.target.innerText;
         this.lightbox.classList.add('lightbox--is-visible', 'lightbox--is-above');
-        window.addEventListener('keydown', this.lightboxEscapeBinded);
+        document.body.addEventListener('keydown', this.lightboxEscapeBinded);
         this.createThumbnails();
         this.displayCurrentImage();
     }
@@ -157,8 +157,6 @@ class Lightbox {
     }
 
     closeLightbox() {
-        console.log(event.currentTarget, 'cur');
-        console.log(event.target);
         if (event.currentTarget !== event.target) {
             return;
         }
@@ -168,7 +166,7 @@ class Lightbox {
             this.lightbox.classList.remove('lightbox--is-above');
             this.removeThumnails();
         }, 500); //set timeout length equal to opactiy transition time in _lightbox.css
-        window.removeEventListener('keydown', this.lightboxEscapeBinded);
+        document.body.removeEventListener('keydown', this.lightboxEscapeBinded);
     }
 
     lightboxEscape() {

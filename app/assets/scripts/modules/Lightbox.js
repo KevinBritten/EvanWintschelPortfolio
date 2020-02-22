@@ -12,6 +12,7 @@ class Lightbox {
         this.imageDescription = this.lightbox.querySelector('.lightbox__description');
         this.slideArea = this.lightbox.querySelector('.lightbox__current-slide');
         this.contentDiv = this.lightbox.querySelector('.lightbox__content');
+        this.imageNumberField = this.lightbox.querySelector('.lightbox__image-number');
         this.nextSlidebutton = this.lightbox.querySelector('.lightbox__nav--next');
         this.previousSlidebutton = this.lightbox.querySelector('.lightbox__nav--previous');
         this.slideScrollBinded = this.slideScroll.bind(this);
@@ -88,16 +89,29 @@ class Lightbox {
         let photo = new Image();
         let url = `./assets/images/albums/${album}/${this.list[album][currentImageIndex]}`;
         photo.onload = () => {
-            this.currentImage.src = url;
-            this.currentImage.setAttribute('slide-id', currentImageIndex);
-            // this.highlightCurrentThumbnail(e, currentImageIndex);
-            if (!this.slideArea.classList.contains('lightbox__current-slide--is-visible')) {
-                this.slideArea.classList.add('lightbox__current-slide--is-visible');
-            }
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    this.currentImage.src = url;
+                    this.currentImage.setAttribute('slide-id', currentImageIndex);
+                    // this.highlightCurrentThumbnail(e, currentImageIndex);
+                    if (!this.slideArea.classList.contains('lightbox__current-slide--is-visible')) {
+                        this.slideArea.classList.add('lightbox__current-slide--is-visible');
+                    }
+                });
+            });
         };
         this.highlightCurrentThumbnail(currentImageIndex);
-        this.imageDescription.innerText = this.list[album][currentImageIndex];
+        this.setPhotoDescription(currentImageIndex, album);
+        this.imageNumberDisplay(currentImageIndex, album);
         photo.src = url;
+    }
+
+    setPhotoDescription(currentImageIndex, album) {
+        this.imageDescription.innerText = this.list[album][currentImageIndex];
+    }
+
+    imageNumberDisplay(currentImageIndex, album) {
+        this.imageNumberField.innerText = `${currentImageIndex + 1}/${this.list[album].length}`;
     }
 
     highlightCurrentThumbnail(currentImageIndex = 0) {

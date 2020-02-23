@@ -20,7 +20,6 @@ class Lightbox {
         this.thumbnailWatcherFunctionBinded = this.thumbnailWatcherFunction.bind(this);
         this.thumbnailWatcher = new MutationObserver(this.thumbnailWatcherFunctionBinded);
         this.thumbnailWatcher.observe(this.thumbnailArea, { childList: true });
-
         this.events();
     }
 
@@ -131,7 +130,9 @@ class Lightbox {
             let newThumbnail = new Image();
             newThumbnail.classList.add('lightbox__thumbnail');
             newThumbnail.setAttribute('slide-id', i);
-            newThumbnail.addEventListener('click', (e) => this.displayCurrentImage(e.target.getAttribute('slide-id')));
+            newThumbnail.addEventListener('click', (e) =>
+                this.displayCurrentImage(parseInt(e.target.getAttribute('slide-id')))
+            );
             newThumbnail.onload = () => {
                 if (this.thumbnailArea.children.length === 0) {
                     this.thumbnailArea.appendChild(newThumbnail);

@@ -110,6 +110,7 @@ class BackgroundImageChange {
     }
 
     bgCycleStarter() {
+        clearInterval(this.bgCycle);
         this.bgCycle = setInterval(() => {
             this.updateImage();
         }, 7000);

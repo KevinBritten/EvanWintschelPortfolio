@@ -2,6 +2,8 @@
     position: fixed;
     top: 250px;
     min-width: 100vw;
+    font-family: $josefinSans;
+    text-align: center;
     &__box {
         position: relative;
         margin-left: auto;
@@ -13,18 +15,27 @@
         border-width: 2px;
         background-color: $whiteTrans;
         transition: height 5000ms;
+        span {
+            display: block;
+            width: 100%;
+            border-top: 1px solid #ccc;
+        }
+    }
+    &__heading {
+        color: $graySelect;
+        margin-bottom: 5px;
+        margin-top: 12px;
     }
     &__list {
         list-style: none;
         padding-inline-start: 0px;
+        margin-top: 0;
         &--is-hidden {
             display: none;
             transition: display 1s;
         }
     }
     &__album {
-        font-family: $josefinSans;
-        text-align: center;
         font-size: 1.5em;
         /* extra padding on top to compensate for default text vertical position inside element. Center text by default and remove padding if possible. */
         padding: 12px 0 6px;

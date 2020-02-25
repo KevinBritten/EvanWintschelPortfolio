@@ -8,14 +8,10 @@ class BackgroundImageChange {
         this.bgImageListCreator();
         this.bgImageListRandomizer();
         this.totalImages = this.bgImageList.length;
-        this.about = document.querySelector('#about-button');
-        this.closeBtn = document.querySelector('.about-overlay__close-button');
-        this.aboutOverlay = document.querySelector('.about-overlay');
         this.albumArea = document.querySelector('.content-area__list');
         this.lightbox = document.querySelector('.lightbox');
         this.lightboxCloseButton = this.lightbox.querySelector('.lightbox__close-button');
         this.lightboxBackgroundEscapeBinded = this.lightboxBackgroundEscape.bind(this);
-        this.aboutBackgroundEscapeBinded = this.aboutBackgroundEscape.bind(this);
         this.randomStartImage();
         this.events();
         this.bgCycleStarter();
@@ -23,8 +19,6 @@ class BackgroundImageChange {
 
     events() {
         this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
-        this.about.addEventListener('click', () => this.aboutBackground());
-        this.closeBtn.addEventListener('click', () => this.aboutBackground());
         this.albumArea.addEventListener('click', () => this.lightboxBackground());
         this.lightboxCloseButton.addEventListener('click', () => this.lightboxBackgroundClose());
     }
@@ -49,26 +43,6 @@ class BackgroundImageChange {
         }
     }
 
-    aboutBackground() {
-        document.body.classList.toggle('about-background');
-        if (document.body.classList.contains('about-background')) {
-            document.body.classList.toggle('fast-transition');
-            document.addEventListener('keydown', this.aboutBackgroundEscapeBinded);
-            this.bgCyclePause();
-            this.imageLoader('./assets/images/bg-images/about-background.jpg');
-        } else {
-            document.removeEventListener('keydown', this.aboutBackgroundEscapeBinded);
-            this.bgCycleUnpause();
-            setTimeout(() => document.body.classList.toggle('fast-transition'), 50);
-        }
-    }
-
-    aboutBackgroundEscape() {
-        if (event.keyCode === 27) {
-            this.aboutBackground();
-        }
-    }
-
     lightboxBackground() {
         window.addEventListener('keydown', this.lightboxBackgroundEscapeBinded);
         this.bgCyclePause();
@@ -77,11 +51,6 @@ class BackgroundImageChange {
     lightboxBackgroundClose() {
         window.removeEventListener('keydown', this.lightboxBackgroundEscapeBinded);
         this.bgCycleStarter();
-    }
-
-    aboutBackgroundCloseBtn() {
-        document.body.classList.toggle('about-background');
-        this.bgCycleUnpause();
     }
 
     lightboxBackgroundEscape() {
@@ -120,9 +89,8 @@ class BackgroundImageChange {
         this.pauseBtn.classList.toggle('pause-btn--is-paused');
         if (this.pauseBtn.classList.contains('pause-btn--is-paused')) {
             this.bgCyclePause();
-        } else if (!document.body.classList.contains('about-background')) {
-            this.bgCycleUnpause();
         }
+        this.bgCycleUnpause();
     }
 
     bgCyclePause() {

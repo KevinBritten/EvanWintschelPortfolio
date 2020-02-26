@@ -3,6 +3,7 @@ const imageList = new ImageList();
 
 class BackgroundImageChange {
     constructor() {
+        this.currentBgImage = document.querySelector('.bg-image--current');
         this.albumList = imageList.list;
         this.pauseBtn = document.querySelector('.pause-btn');
         this.bgImageListCreator();
@@ -64,10 +65,26 @@ class BackgroundImageChange {
         this.imageLoader(this.bgImageList[this.currentImageIndex]);
     }
 
+    bgImageToggle() {
+        this.bgDivs.forEach((div) => {
+            div.classList.toggle('bg-image--current');
+        });
+    }
+
     imageLoader(url) {
         var img = new Image();
         img.onload = function() {
-            document.body.style.backgroundImage = `url('${url}')`;
+            if (!document.querySelector('#bg-image-container').classList.contains('initialized')) {
+                document.querySelector('.bg-image--current').src = `${url}`;
+                document.querySelector('#bg-image-container').classList.add('initialized');
+                return;
+            }
+            let bgDivs = [...document.querySelector('#bg-image-container').children];
+            bgDivs.forEach((image) => image.classList.toggle('bg-image--current'));
+            document.querySelector('.bg-image--current').src = `${url}`;
+
+            // image.classList.toggle('bg-image--current'));
+            // bgImageToggle();
         };
         img.src = url;
     }
@@ -105,7 +122,7 @@ class BackgroundImageChange {
     }
 
     displayPausedBg() {
-        document.body.style.backgroundImage = `url(${this.bgImageList[this.currentImageIndex]})`;
+        this.currentBgImage.src = `${this.bgImageList[this.currentImageIndex]}`;
     }
 
     set currentImage(imageNumber) {

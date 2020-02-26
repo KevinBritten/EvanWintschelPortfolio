@@ -82,6 +82,17 @@
         top: 10px;
         left: 10px;
     }
+    &__fullscreen-icon {
+        z-index: 2;
+        position: absolute;
+        bottom: 25px;
+        right: 10px;
+        cursor: pointer;
+        transition: transform 200ms;
+        &:hover {
+            transform: scale(1.1, 1.1);
+        }
+    }
     &__thumbnail-container {
         opacity: 0;
         margin: 2% auto 0;

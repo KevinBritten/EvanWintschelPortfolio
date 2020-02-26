@@ -177,7 +177,11 @@ class Lightbox {
 
     lightboxEscape() {
         if (event.keyCode === 27) {
-            this.closeLightbox();
+            if (this.currentImageWrapper.classList.contains('lightbox__current-slide--fullscreen')) {
+                this.fullscreenToggle();
+            } else {
+                this.closeLightbox();
+            }
         }
     }
 

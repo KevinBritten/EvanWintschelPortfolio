@@ -11,7 +11,7 @@ class Lightbox {
         this.currentImage = this.lightbox.querySelector('.lightbox__current-image');
         this.imageDescription = this.lightbox.querySelector('.lightbox__description');
         this.slideArea = this.lightbox.querySelector('.lightbox__current-slide');
-        this.contentDiv = this.lightbox.querySelector('.lightbox__content');
+        this.currentImageWrapper = this.lightbox.querySelector('.lightbox__content');
         this.imageNumberField = this.lightbox.querySelector('.lightbox__image-number');
         this.nextSlidebutton = this.lightbox.querySelector('.lightbox__nav--next');
         this.previousSlidebutton = this.lightbox.querySelector('.lightbox__nav--previous');
@@ -34,7 +34,7 @@ class Lightbox {
         this.nextSlidebutton.addEventListener('click', () => this.slideScroll(1));
         this.previousSlidebutton.addEventListener('click', () => this.slideScroll(-1));
         this.lightbox.addEventListener('click', () => this.closeLightbox(), false);
-        this.contentDiv.addEventListener('click', () => this.closeLightbox(), false);
+        this.currentImageWrapper.addEventListener('click', () => this.closeLightbox(), false);
         this.fullscreenIcon.addEventListener('click', () => this.fullscreenToggle());
         window.addEventListener('keydown', () => this.slideScrollKey());
     }
@@ -153,7 +153,7 @@ class Lightbox {
         }
     }
     fullscreenToggle() {
-        this.slideArea.classList.toggle('lightbox__current-slide--fullscreen');
+        this.currentImageWrapper.classList.toggle('lightbox__current-slide--fullscreen');
     }
 
     removeThumnails() {
@@ -165,10 +165,12 @@ class Lightbox {
             return;
         }
         this.lightbox.classList.remove('lightbox--is-visible');
-
         setTimeout(() => {
             this.lightbox.classList.remove('lightbox--is-above');
             this.removeThumnails();
+            if (this.currentImageWrapper.classList.contains('lightbox__current-slide--fullscreen')) {
+                this.fullscreenToggle();
+            }
         }, 500); //set timeout length equal to opactiy transition time in _lightbox.css
         document.body.removeEventListener('keydown', this.lightboxEscapeBinded);
     }

@@ -153,7 +153,7 @@ class Lightbox {
         }
     }
     fullscreenToggle() {
-        this.currentImageWrapper.classList.toggle('lightbox__current-slide--fullscreen');
+        this.currentImageWrapper.classList.toggle('lightbox__content--fullscreen');
     }
 
     removeThumnails() {
@@ -168,7 +168,7 @@ class Lightbox {
         setTimeout(() => {
             this.lightbox.classList.remove('lightbox--is-above');
             this.removeThumnails();
-            if (this.currentImageWrapper.classList.contains('lightbox__current-slide--fullscreen')) {
+            if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
                 this.fullscreenToggle();
             }
         }, 500); //set timeout length equal to opactiy transition time in _lightbox.css
@@ -177,7 +177,7 @@ class Lightbox {
 
     lightboxEscape() {
         if (event.keyCode === 27) {
-            if (this.currentImageWrapper.classList.contains('lightbox__current-slide--fullscreen')) {
+            if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
                 this.fullscreenToggle();
             } else {
                 this.closeLightbox();

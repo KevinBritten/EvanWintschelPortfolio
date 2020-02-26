@@ -59,6 +59,12 @@
         display: flex;
         justify-content: space-around;
         padding-top: 20px;
+        &--fullscreen {
+            height: 100vh;
+            width: 100vw;
+            text-align: center;
+            padding-top: 0;
+        }
     }
     &__current-slide {
         display: flex;
@@ -74,12 +80,6 @@
         &--is-visible {
             transition: opacity .2s ease-in;
             opacity: 1;
-        }
-        &--fullscreen {
-            height: 100vh;
-            width: 100vw;
-            text-align: center;
-            padding-top: 0;
         }
     }
     &__current-image {

@@ -15,6 +15,7 @@ class Lightbox {
         this.imageNumberField = this.lightbox.querySelector('.lightbox__image-number');
         this.nextSlidebutton = this.lightbox.querySelector('.lightbox__nav--next');
         this.previousSlidebutton = this.lightbox.querySelector('.lightbox__nav--previous');
+        this.fullscreenIcon = this.lightbox.querySelector('.lightbox__fullscreen-icon');
         this.slideScrollBinded = this.slideScroll.bind(this);
         this.lightboxEscapeBinded = this.lightboxEscape.bind(this);
         this.thumbnailWatcherFunctionBinded = this.thumbnailWatcherFunction.bind(this);
@@ -34,6 +35,7 @@ class Lightbox {
         this.previousSlidebutton.addEventListener('click', () => this.slideScroll(-1));
         this.lightbox.addEventListener('click', () => this.closeLightbox(), false);
         this.contentDiv.addEventListener('click', () => this.closeLightbox(), false);
+        this.fullscreenIcon.addEventListener('click', () => this.fullscreenToggle());
         window.addEventListener('keydown', () => this.slideScrollKey());
     }
 
@@ -148,9 +150,10 @@ class Lightbox {
                 }
             };
             newThumbnail.src = url;
-
-            // this.thumbnailArea.classList.add('lightbox__thumbnail-container--is-visible', );
         }
+    }
+    fullscreenToggle() {
+        this.slideArea.classList.toggle('lightbox__current-slide--fullscreen');
     }
 
     removeThumnails() {

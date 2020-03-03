@@ -57,7 +57,7 @@ class BackgroundImageChange {
             return;
         }
         window.removeEventListener('keydown', this.lightboxBackgroundEscapeBinded);
-        this.bgCycleStarter();
+        this.bgCycleUnpause();
     }
 
     lightboxBackgroundEscape() {

@@ -11,6 +11,7 @@ class BackgroundImageChange {
         this.totalImages = this.bgImageList.length;
         this.albumArea = document.querySelector('.content-area__list');
         this.lightbox = document.querySelector('.lightbox');
+        this.lightboxImageWrapper = this.lightbox.querySelector('.lightbox__content');
         this.lightboxCloseButton = this.lightbox.querySelector('.lightbox__close-button');
         this.lightboxBackgroundEscapeBinded = this.lightboxBackgroundEscape.bind(this);
         this.randomStartImage();
@@ -22,6 +23,8 @@ class BackgroundImageChange {
         this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
         this.albumArea.addEventListener('click', () => this.lightboxBackground());
         this.lightboxCloseButton.addEventListener('click', () => this.lightboxBackgroundClose());
+        this.lightbox.addEventListener('click', () => this.lightboxBackgroundClose(), false);
+        this.lightboxImageWrapper.addEventListener('click', () => this.lightboxBackgroundClose(), false);
     }
 
     bgImageListCreator() {
@@ -50,6 +53,9 @@ class BackgroundImageChange {
     }
 
     lightboxBackgroundClose() {
+        if (event.currentTarget !== event.target) {
+            return;
+        }
         window.removeEventListener('keydown', this.lightboxBackgroundEscapeBinded);
         this.bgCycleStarter();
     }

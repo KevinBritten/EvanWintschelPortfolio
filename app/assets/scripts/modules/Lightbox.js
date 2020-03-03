@@ -58,15 +58,6 @@ class Lightbox {
         this.displayCurrentImage(nextIndex);
     }
 
-    // nextSlide() {
-    //     let nextIndex = parseInt(this.currentImage.getAttribute('slide-id')) + 1;
-    //     console.log(this.list[this.currentAlbum].length);
-    //     if (nextIndex > this.list[this.currentAlbum].length - 1) {
-    //         nextIndex = 0;
-    //     }
-    //     this.displayCurrentImage(nextIndex);
-    // }
-
     thumbnailWatcherFunction(mutation) {
         if (this.list[this.currentAlbum].length === mutation[0].target.childElementCount) {
             mutation[0].target.classList.add('lightbox__thumbnail-container--is-visible');
@@ -116,7 +107,6 @@ class Lightbox {
     }
 
     highlightCurrentThumbnail(currentImageIndex = 0) {
-        console.log(currentImageIndex);
         for (let thumbnail of this.thumbnailArea.children) {
             if (parseInt(thumbnail.getAttribute('slide-id')) === parseInt(currentImageIndex)) {
                 thumbnail.classList.add('lightbox__thumbnail--is-current');

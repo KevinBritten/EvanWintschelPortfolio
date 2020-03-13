@@ -23,8 +23,8 @@ class BackgroundImageChange {
         this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
         this.albumArea.addEventListener('click', () => this.lightboxBackground());
         this.lightboxCloseButton.addEventListener('click', () => this.lightboxBackgroundClose());
-        this.lightbox.addEventListener('click', () => this.lightboxBackgroundClose(), false);
-        this.lightboxImageWrapper.addEventListener('click', () => this.lightboxBackgroundClose(), false);
+        this.lightbox.addEventListener('click', () => this.lightboxBackgroundMouseClose(), false);
+        this.lightboxImageWrapper.addEventListener('click', () => this.lightboxBackgroundMouseClose(), false);
     }
 
     bgImageListCreator() {
@@ -53,15 +53,20 @@ class BackgroundImageChange {
     }
 
     lightboxBackgroundClose() {
-        if (event.currentTarget !== event.target) {
-            return;
-        }
         window.removeEventListener('keydown', this.lightboxBackgroundEscapeBinded);
         this.bgCycleUnpause();
     }
 
     lightboxBackgroundEscape() {
         if (event.keyCode === 27) {
+            this.lightboxBackgroundClose();
+        }
+    }
+
+    lightboxBackgroundMouseClose() {
+        if (event.currentTarget !== event.target) {
+            return;
+        } else {
             this.lightboxBackgroundClose();
         }
     }

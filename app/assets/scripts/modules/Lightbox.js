@@ -81,17 +81,19 @@ class Lightbox {
         let photo = new Image();
         let url = `./assets/images/albums/${album}/${this.list[album][currentImageIndex]}`;
         photo.onload = () => {
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    this.currentImage.src = url;
-                    this.currentImage.setAttribute('slide-id', currentImageIndex);
-                    // this.highlightCurrentThumbnail(e, currentImageIndex);
-                    if (!this.slideArea.classList.contains('lightbox__current-slide--is-visible')) {
-                        this.slideArea.classList.add('lightbox__current-slide--is-visible');
-                    }
-                });
-            });
+            // requestAnimationFrame(() => {
+            //     requestAnimationFrame(() => {
+            this.currentImage.src = url;
+            this.currentImage.setAttribute('slide-id', currentImageIndex);
+            // this.highlightCurrentThumbnail(e, currentImageIndex);
+            if (!this.slideArea.classList.contains('lightbox__current-slide--is-visible')) {
+                this.slideArea.classList.add('lightbox__current-slide--is-visible');
+            }
         };
+        // );
+        // }
+        // );
+        // };
         this.highlightCurrentThumbnail(currentImageIndex);
         this.setPhotoDescription(currentImageIndex, album);
         this.imageNumberDisplay(currentImageIndex, album);
@@ -126,6 +128,10 @@ class Lightbox {
                 this.displayCurrentImage(parseInt(e.target.getAttribute('slide-id')))
             );
             newThumbnail.onload = () => {
+                //wait for image to render in firefox
+                // requestAnimationFrame(() => {
+                //     requestAnimationFrame(() => {
+                console.log(7);
                 if (this.thumbnailArea.children.length === 0) {
                     this.thumbnailArea.appendChild(newThumbnail);
                 } else {
@@ -139,9 +145,15 @@ class Lightbox {
                     }
                 }
             };
+            // );
+            // }
+            // );
+            // };
+
             newThumbnail.src = url;
         }
     }
+
     fullscreenToggle() {
         this.currentImageWrapper.classList.toggle('lightbox__content--fullscreen');
     }
@@ -161,6 +173,7 @@ class Lightbox {
             if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
                 this.fullscreenToggle();
             }
+            this.currentImage.src = '';
         }, 500); //set timeout length equal to opactiy transition time in _lightbox.css
         document.body.removeEventListener('keydown', this.lightboxEscapeBinded);
     }

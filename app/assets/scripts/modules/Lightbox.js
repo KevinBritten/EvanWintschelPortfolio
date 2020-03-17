@@ -101,7 +101,8 @@ class Lightbox {
     }
 
     setPhotoDescription(currentImageIndex, album) {
-        this.imageDescription.innerText = this.list[album][currentImageIndex];
+        let description = this.list[album][currentImageIndex].replace(/(-bg)?(.jpg|.jpeg)/gi, '');
+        this.imageDescription.innerText = description;
     }
 
     imageNumberDisplay(currentImageIndex, album) {

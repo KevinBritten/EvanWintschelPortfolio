@@ -121,6 +121,7 @@
         display: flex;
         justify-content: center;
         transition: none;
+        overflow: scroll;
         &--is-visible {
             transition: opacity .2s ease-in;
             opacity: 1;

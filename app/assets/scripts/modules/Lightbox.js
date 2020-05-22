@@ -156,7 +156,19 @@ class Lightbox {
     }
 
     fullscreenToggle() {
+        let lightboxIcons = [
+            this.fullscreenIcon,
+            this.previousSlidebutton,
+            this.nextSlidebutton,
+            this.imageNumberField
+        ];
+        lightboxIcons.forEach((icon) => {
+            icon.classList.toggle('lightbox--fullscreen-overlay');
+            console.log(icon);
+        });
+        this.fullscreenIcon.classList.toggle('lightbox__fullscreen-icon--fullscreen');
         this.currentImageWrapper.classList.toggle('lightbox__content--fullscreen');
+        this.currentImage.classList.toggle('lightbox__current-image--fullscreen');
     }
 
     removeThumnails() {

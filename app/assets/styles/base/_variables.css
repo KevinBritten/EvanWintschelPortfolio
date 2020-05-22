@@ -3,5 +3,6 @@ $josefinSans: 'Josefin Sans',
 sans-serif;
 $whiteTrans: rgba(255, 255, 255, 0.85);
 $graySelect: rgba(0, 0, 30, 0.6);
-$blackTrans: rgba(0, 0, 0, 0.90);
+$blackTransNav: rgba(0, 0, 0, 0.73);
+$blackTrans: rgba(0, 0, 0, 0.93);
 $whiteSelect: rgba(255, 255, 255, 0.85);

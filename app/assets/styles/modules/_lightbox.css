@@ -22,8 +22,7 @@
     }
     &__close-button {
         position: absolute;
-        top: 15px;
-        right: 25px;
+        right: 10px;
         font-size: 35px;
         font-family: Verdana, sans-serif;
         font-weight: 600;
@@ -44,7 +43,7 @@
         user-select: none;
         cursor: pointer;
         &:hover {
-            background-color: $blackTrans;
+            background-color: $blackTransNav;
         }
         &--previous {
             left: 0;
@@ -84,6 +83,9 @@
     }
     &__current-image {
         height: 96%;
+        &--fullscreen {
+            height: 100%;
+        }
     }
     &__description {
         padding-top: 4px;
@@ -104,6 +106,12 @@
         &:hover {
             transform: scale(1.1, 1.1);
         }
+        &--fullscreen {
+            bottom: 1%;
+        }
+    }
+    &--fullscreen-overlay {
+        position: fixed;
     }
     &__thumbnail-container {
         opacity: 0;

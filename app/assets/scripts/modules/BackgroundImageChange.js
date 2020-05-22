@@ -54,7 +54,11 @@ class BackgroundImageChange {
 
     lightboxBackgroundClose() {
         window.removeEventListener('keydown', this.lightboxBackgroundEscapeBinded);
-        this.bgCycleUnpause();
+        if (!this.pauseBtn.classList.contains('pause-btn--is-paused')) {
+            this.bgCycleStarter();
+        } else {
+            this.bgCycleUnpause();
+        }
     }
 
     lightboxBackgroundEscape() {

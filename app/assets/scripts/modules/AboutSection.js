@@ -28,8 +28,9 @@ class AboutSection {
         let capsTitle = e.target.innerText;
         let title = capsTitle.charAt(0) + capsTitle.slice(1).toLowerCase();
         let contentTexts = {
-            About: 'string about bakjwdbkajwbstring about bakjwdbkajwbdkajwbdkstring about bakjwdbkajwbdkajwbdkstring about bakjwdbkajwbdkajwbdkstring about bakjwdbkajwbdkajwbdkdkajwbdkjaw',
-            Prints: 'string pringsslkeflskef bakjwdbkajwbstring aefjsl bakjwdbkajwbdkajwbdkstring about bakjwdbkajwbdkajwbdkstring about bakjwdbkajwbdkajwbdkstring about bakjwdbkajwbdkajwbdkdkajwbdkjaw'
+            About: `Born in Ontario, raised in Vancouver and living in Montreal. 
+Fortunate enough to attend a high school with a darkroom.`,
+            Prints: `If you you like to buy prints of my work or have any questions please send me an email via evan.wintschel@gmail.com`
         };
         this.contentSection.style.minHeight = `${this.contentSectionHeight}px`;
         if (

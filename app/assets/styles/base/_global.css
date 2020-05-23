@@ -4,6 +4,10 @@ body {
     transition: opacity 1s ease-in;
 }
 
+img {
+    image-orientation: from-image;
+}
+
 * {
     box-sizing: border-box;
 }

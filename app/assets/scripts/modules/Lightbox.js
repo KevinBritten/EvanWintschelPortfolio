@@ -121,7 +121,10 @@ class Lightbox {
     createThumbnails() {
         let album = this.currentAlbum;
         for (let i = 0; i < this.list[album].length; i++) {
-            let url = `./assets/images/albums/${album}/${this.list[album][i]}`;
+            let extention = `${this.list[album][i]}`.slice(`${this.list[album][i]}`.lastIndexOf('.'));
+            let imageName = `${this.list[album][i]}`.replace(`${extention}`, '');
+            console.log(imageName);
+            let url = `./assets/images/albums/${album}/thumbnails/${imageName}-thumb${extention}`;
             let newThumbnail = new Image();
             newThumbnail.classList.add('lightbox__thumbnail');
             newThumbnail.setAttribute('slide-id', i);

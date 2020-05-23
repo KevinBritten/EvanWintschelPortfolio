@@ -28,7 +28,7 @@ class RunBeforeCompile {
             folders.forEach((folder) => {
                 images[folder] = fse
                     .readdirSync(`./app/assets/images/albums/${folder}`)
-                    .filter((image) => !image.includes('.DS_Store'));
+                    .filter((image) => !(image.includes('.DS_Store') || image.includes('thumbnails')));
                 albumListHtml += `<li class="content-area__album">${folder}</li>`;
             });
             fse.writeFileSync(

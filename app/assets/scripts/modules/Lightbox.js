@@ -132,12 +132,14 @@ class Lightbox {
                 //wait for image to render in firefox
                 // requestAnimationFrame(() => {
                 //     requestAnimationFrame(() => {
-                console.log(7);
                 if (this.thumbnailArea.children.length === 0) {
                     this.thumbnailArea.appendChild(newThumbnail);
                 } else {
                     for (let thumbnail of this.thumbnailArea.children) {
-                        if (newThumbnail.getAttribute('slide-id') < thumbnail.getAttribute('slide-id')) {
+                        if (
+                            parseInt(newThumbnail.getAttribute('slide-id')) <
+                            parseInt(thumbnail.getAttribute('slide-id'))
+                        ) {
                             thumbnail.before(newThumbnail);
                             return;
                         } else {
@@ -171,7 +173,7 @@ class Lightbox {
         this.currentImage.classList.toggle('lightbox__current-image--fullscreen');
     }
 
-    removeThumnails() {
+    removeThumbnails() {
         this.thumbnailArea.innerHTML = '';
     }
 
@@ -182,7 +184,7 @@ class Lightbox {
         this.lightbox.classList.remove('lightbox--is-visible');
         setTimeout(() => {
             this.lightbox.classList.remove('lightbox--is-above');
-            this.removeThumnails();
+            this.removeThumbnails();
             if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
                 this.fullscreenToggle();
             }

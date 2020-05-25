@@ -47,7 +47,7 @@ class RunBeforeCompile {
 class RunAfterCompile {
     apply(compiler) {
         compiler.hooks.done.tap('Copy Images', function() {
-            fse.copySync('./app/assets/images', './dist/assets/images'); //copy image directory to dist
+            fse.copySync('./app/assets/images', './gh-pages/dist/assets/images'); //copy image directory to dist
         });
     }
 }
@@ -125,7 +125,7 @@ if (currentTask === 'build') {
     config.output = {
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'gh-pages', 'dist')
     };
     config.optimization.splitChunks = { chunks: 'all' };
     config.plugins.unshift(

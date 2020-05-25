@@ -169,7 +169,6 @@ class Lightbox {
         ];
         lightboxIcons.forEach((icon) => {
             icon.classList.toggle('lightbox--fullscreen-overlay');
-            console.log(icon);
         });
         this.fullscreenIcon.classList.toggle('lightbox__fullscreen-icon--fullscreen');
         this.currentImageWrapper.classList.toggle('lightbox__content--fullscreen');
@@ -184,25 +183,25 @@ class Lightbox {
         if (event.currentTarget !== event.target) {
             return;
         }
-        this.lightbox.classList.remove('lightbox--is-visible');
-        setTimeout(() => {
-            this.lightbox.classList.remove('lightbox--is-above');
-            this.removeThumbnails();
-            if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
-                this.fullscreenToggle();
-            }
-            this.currentImage.src = '';
-        }, 500); //set timeout length equal to opactiy transition time in _lightbox.css
-        document.body.removeEventListener('keydown', this.lightboxEscapeBinded);
+        if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
+            this.fullscreenToggle();
+        } else {
+            this.lightbox.classList.remove('lightbox--is-visible');
+            setTimeout(() => {
+                this.lightbox.classList.remove('lightbox--is-above');
+                this.removeThumbnails();
+                if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
+                    this.fullscreenToggle();
+                }
+                this.currentImage.src = '';
+            }, 500); //set timeout length equal to opactiy transition time in _lightbox.css
+            document.body.removeEventListener('keydown', this.lightboxEscapeBinded);
+        }
     }
 
     lightboxEscape() {
         if (event.keyCode === 27) {
-            if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
-                this.fullscreenToggle();
-            } else {
-                this.closeLightbox();
-            }
+            this.closeLightbox();
         }
     }
 

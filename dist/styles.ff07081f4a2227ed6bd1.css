@@ -351,7 +351,8 @@ template {
 
 body {
     position: relative;
-    overflow: hidden;
+    overflow: scroll;
+    overflow-y: hidden;
     -webkit-transition: opacity 1s ease-in;
     transition: opacity 1s ease-in;
 }
@@ -386,12 +387,12 @@ img {
 }
 
 .bg-image {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: -8;
-    min-width: 100vw;
-    width: 100vw;
+    min-width: 100%;
+    width: 100%;
     -webkit-transition: opacity 1s ease-in;
     transition: opacity 1s ease-in;
     opacity: 0;
@@ -403,9 +404,9 @@ img {
     }
 
 .content-area {
-    position: fixed;
+    position: absolute;
     top: 250px;
-    min-width: 100vw;
+    min-width: 100%;
     font-family: 'Josefin Sans',
 sans-serif;
     text-align: center;
@@ -468,10 +469,10 @@ sans-serif;
         }
 
 .site-header {
-    position: fixed;
+    position: absolute;
     top: 0px;
     height: 100px;
-    width: 100vw;
+    width: 100%;
     display: -webkit-box;
     display: flex;
     border-style: solid none;

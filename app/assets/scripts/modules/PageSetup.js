@@ -11,7 +11,9 @@ class PageSetup {
     }
     setDimensions() {
         let windowHeight = window.screen.height;
+        let windowWidth = window.screen.width;
         document.body.style.minHeight = `${windowHeight}px`;
+        document.body.style.minWidth = `${windowWidth}px`;
     }
 }
 

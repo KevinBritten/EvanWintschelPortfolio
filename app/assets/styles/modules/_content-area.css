@@ -1,7 +1,7 @@
 .content-area {
-    position: fixed;
+    position: absolute;
     top: 250px;
-    min-width: 100vw;
+    min-width: 100%;
     font-family: $josefinSans;
     text-align: center;
     &__box {

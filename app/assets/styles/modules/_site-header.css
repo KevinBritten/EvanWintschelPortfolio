@@ -1,8 +1,8 @@
 .site-header {
-    position: fixed;
+    position: absolute;
     top: 0px;
     height: 100px;
-    width: 100vw;
+    width: 100%;
     display: flex;
     border-style: solid none;
     border-width: 3px;

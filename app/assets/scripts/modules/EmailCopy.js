@@ -26,7 +26,6 @@ class EmailCopy {
     }
 
     copyAlert() {
-        // this.alert.classList.toggle('site-header__copy-alert--is-visible');
         clearTimeout(this.opactiyTimer);
         clearTimeout(this.displayTimer);
         this.alert.style.transition = 'none';

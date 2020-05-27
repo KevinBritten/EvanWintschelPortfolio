@@ -170,9 +170,11 @@ class Lightbox {
             this.nextSlidebutton,
             this.imageNumberField
         ];
+        let navButtons = [this.previousSlidebutton, this.nextSlidebutton];
         lightboxIcons.forEach((icon) => {
             icon.classList.toggle('lightbox--fullscreen-overlay');
         });
+        navButtons.forEach((button) => button.classList.toggle('lightbox__nav--fullscreen'));
         this.fullscreenIcon.classList.toggle('lightbox__fullscreen-icon--fullscreen');
         this.currentImageWrapper.classList.toggle('lightbox__content--fullscreen');
         this.currentImage.classList.toggle('lightbox__current-image--fullscreen');

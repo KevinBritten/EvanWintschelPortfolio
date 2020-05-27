@@ -87,7 +87,7 @@
     &__current-image {
         height: 96%;
         &--fullscreen {
-            height: 100%;
+            min-height: 100vh;
         }
     }
     &__description {

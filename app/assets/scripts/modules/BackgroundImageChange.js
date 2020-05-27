@@ -97,9 +97,6 @@ class BackgroundImageChange {
             let bgDivs = [...document.querySelector('#bg-image-container').children];
             bgDivs.forEach((image) => image.classList.toggle('bg-image--current'));
             document.querySelector('.bg-image--current').src = `${url}`;
-
-            // image.classList.toggle('bg-image--current'));
-            // bgImageToggle();
         };
         img.src = url;
     }

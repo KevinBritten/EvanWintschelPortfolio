@@ -87,7 +87,6 @@ class Lightbox {
             //     requestAnimationFrame(() => {
             this.currentImage.src = url;
             this.currentImage.setAttribute('slide-id', currentImageIndex);
-            // this.highlightCurrentThumbnail(e, currentImageIndex);
             if (!this.slideArea.classList.contains('lightbox__current-slide--is-visible')) {
                 this.slideArea.classList.add('lightbox__current-slide--is-visible');
             }
@@ -128,7 +127,6 @@ class Lightbox {
         for (let i = 0; i < this.list[album].length; i++) {
             let extention = `${this.list[album][i]}`.slice(`${this.list[album][i]}`.lastIndexOf('.'));
             let imageName = `${this.list[album][i]}`.replace(`${extention}`, '');
-            console.log(imageName);
             let url = `./assets/images/albums/${album}/thumbnails/${imageName}-thumb${extention}`;
             let newThumbnail = new Image();
             newThumbnail.classList.add('lightbox__thumbnail');

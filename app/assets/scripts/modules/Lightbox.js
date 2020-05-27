@@ -61,6 +61,8 @@ class Lightbox {
     thumbnailWatcherFunction(mutation) {
         if (this.list[this.currentAlbum].length === mutation[0].target.childElementCount) {
             mutation[0].target.classList.add('lightbox__thumbnail-container--is-visible');
+            mutation[0].target.firstElementChild.classList.add('lightbox__thumbnail--first');
+            mutation[0].target.lastElementChild.classList.add('lightbox__thumbnail--last');
             this.highlightCurrentThumbnail();
         } else if (mutation[0].target.childElementCount === 0) {
             mutation[0].target.classList.remove('lightbox__thumbnail-container--is-visible');
@@ -113,6 +115,9 @@ class Lightbox {
         for (let thumbnail of this.thumbnailArea.children) {
             if (parseInt(thumbnail.getAttribute('slide-id')) === parseInt(currentImageIndex)) {
                 thumbnail.classList.add('lightbox__thumbnail--is-current');
+                let leftPos = thumbnail.offsetLeft;
+                let thumbnailAreaLeft = this.thumbnailArea.getBoundingClientRect().left;
+                this.thumbnailArea.scrollLeft = leftPos - thumbnailAreaLeft - 70;
             } else {
                 thumbnail.classList.remove('lightbox__thumbnail--is-current');
             }

@@ -666,8 +666,10 @@ sans-serif;
         text-decoration: none;
         padding: 10px;
         font-size: 1.5em;
-        -webkit-transition: background-color 500ms;
-        transition: background-color 500ms;
+        -webkit-transition: font-size 100ms, -webkit-transform 100ms;
+        transition: font-size 100ms, -webkit-transform 100ms;
+        transition: font-size 100ms, transform 100ms;
+        transition: font-size 100ms, transform 100ms, -webkit-transform 100ms;
         -webkit-user-select: none;
            -moz-user-select: none;
             -ms-user-select: none;
@@ -676,7 +678,9 @@ sans-serif;
     }
 
 .lightbox__nav:hover {
-            background-color: rgba(0, 0, 0, 0.73);
+            font-size: 1.6em;
+            -webkit-transform: translateY(-2px);
+                    transform: translateY(-2px);
         }
 
 .lightbox__nav--previous {
@@ -749,6 +753,7 @@ sans-serif;
         position: absolute;
         top: 6px;
         left: 10px;
+        text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
     }
 
 .lightbox__fullscreen-icon {

@@ -116,7 +116,9 @@ class Lightbox {
                 thumbnail.classList.add('lightbox__thumbnail--is-current');
                 let leftPos = thumbnail.offsetLeft;
                 let thumbnailAreaLeft = this.thumbnailArea.getBoundingClientRect().left;
-                this.thumbnailArea.scrollLeft = leftPos - thumbnailAreaLeft - 70;
+
+                this.thumbnailArea.scrollLeft =
+                    leftPos - thumbnailAreaLeft - this.thumbnailArea.offsetWidth / 2 + thumbnail.offsetWidth / 2;
             } else {
                 thumbnail.classList.remove('lightbox__thumbnail--is-current');
             }

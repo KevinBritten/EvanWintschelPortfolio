@@ -39,11 +39,12 @@
         text-decoration: none;
         padding: 10px;
         font-size: 1.5em;
-        transition: background-color 500ms;
+        transition: font-size 100ms, transform 100ms;
         user-select: none;
         cursor: pointer;
         &:hover {
-            background-color: $blackTransNav;
+            font-size: 1.6em;
+            transform: translateY(-2px);
         }
         &--previous {
             left: 10px;
@@ -98,6 +99,7 @@
         position: absolute;
         top: 6px;
         left: 10px;
+        text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
     }
     &__fullscreen-icon {
         z-index: 2;

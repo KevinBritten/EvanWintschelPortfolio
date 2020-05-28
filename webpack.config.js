@@ -19,7 +19,7 @@ const postCSSPlugins = [
 
 class RunBeforeCompile {
     apply(compiler) {
-        //make image list file in dist folder
+        //make image list file in home folder
         compiler.hooks.beforeRun.tap('Make Image List', function() {
             const folderDirents = fse.readdirSync('./app/assets/images/albums', { withFileTypes: true });
             const folders = folderDirents.filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
@@ -47,7 +47,7 @@ class RunBeforeCompile {
 class RunAfterCompile {
     apply(compiler) {
         compiler.hooks.done.tap('Copy Images', function() {
-            fse.copySync('./app/assets/images', './gh-pages/dist/assets/images'); //copy image directory to dist
+            fse.copySync('./app/assets/images', './gh-pages/home/assets/images'); //copy image directory to home
         });
     }
 }
@@ -125,7 +125,7 @@ if (currentTask === 'build') {
     config.output = {
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js',
-        path: path.resolve(__dirname, 'gh-pages', 'dist')
+        path: path.resolve(__dirname, 'gh-pages', 'home')
     };
     config.optimization.splitChunks = { chunks: 'all' };
     config.plugins.unshift(

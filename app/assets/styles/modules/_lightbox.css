@@ -114,6 +114,10 @@
         }
         &--fullscreen {
             bottom: 1%;
+            transform: scale(1.1, 1.1);
+            &:hover {
+                transform: scale(1.0, 1.0);
+            }
         }
     }
     &--fullscreen-overlay {

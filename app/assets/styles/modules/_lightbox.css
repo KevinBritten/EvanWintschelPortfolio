@@ -39,13 +39,11 @@
         text-decoration: none;
         padding: 10px;
         font-size: 1.5em;
-        transition: font-size 100ms, transform 100ms;
         user-select: none;
         z-index: 3;
         cursor: pointer;
         &:hover {
-            font-size: 1.6em;
-            transform: translateY(-2px);
+            color: $whiteSelect;
         }
         &--previous {
             left: 10px;

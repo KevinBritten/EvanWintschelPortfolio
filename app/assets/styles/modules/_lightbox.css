@@ -135,6 +135,7 @@
         display: flex;
         transition: none;
         overflow: scroll;
+        scroll-behavior: smooth;
         &--is-visible {
             transition: opacity .2s ease-in;
             opacity: 1;

@@ -800,6 +800,7 @@ sans-serif;
         -webkit-transition: none;
         transition: none;
         overflow: scroll;
+        scroll-behavior: smooth;
     }
 
 .lightbox__thumbnail-container--is-visible {

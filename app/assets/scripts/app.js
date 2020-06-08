@@ -11,6 +11,7 @@ new AboutSection();
 new PageSetup();
 new EmailCopy();
 
+const images = require.context('../images/albums/', true, /\.(jpe?g|png)$/i);
 if (module.hot) {
     module.hot.accept();
 }

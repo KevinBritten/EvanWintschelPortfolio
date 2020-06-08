@@ -44,13 +44,6 @@ class RunBeforeCompile {
         });
     }
 }
-class RunAfterCompile {
-    apply(compiler) {
-        compiler.hooks.done.tap('Copy Images', function() {
-            fse.copySync('./app/assets/images', './gh-pages/home/assets/images'); //copy image directory to home
-        });
-    }
-}
 
 let cssConfig = {
     test: /\.css$/i,
@@ -83,12 +76,11 @@ let config = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.(png|jpg)$/,
-                include: [path.resolve(__dirname, 'app/assets/images/bg-images')],
+                test: /\.(jpe?g|png)$/i,
                 use: [{
-                    loader: 'url-loader',
+                    loader: 'file-loader',
                     options: {
-                        name: '[name].[ext]'
+                        name: '[path][name].[ext]'
                     }
                 }]
             },
@@ -128,11 +120,7 @@ if (currentTask === 'build') {
         path: path.resolve(__dirname, 'gh-pages', 'home')
     };
     config.optimization.splitChunks = { chunks: 'all' };
-    config.plugins.unshift(
-        new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({ filename: 'styles.[chunkhash].css' }),
-        new RunAfterCompile()
-    );
+    config.plugins.unshift(new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: 'styles.[chunkhash].css' }));
 }
 
 module.exports = config;

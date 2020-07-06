@@ -81,7 +81,7 @@ class Lightbox {
     displayCurrentImage(currentImageIndex = 0) {
         let album = this.currentAlbum;
         let photo = new Image();
-        let url = `./assets/images/albums/${album}/${this.list[album][currentImageIndex]}`;
+        let url = `./app/assets/images/albums/${album}/${this.list[album][currentImageIndex]}`;
         photo.onload = () => {
             // requestAnimationFrame(() => {
             //     requestAnimationFrame(() => {
@@ -129,7 +129,7 @@ class Lightbox {
         for (let i = 0; i < this.list[album].length; i++) {
             let extention = `${this.list[album][i]}`.slice(`${this.list[album][i]}`.lastIndexOf('.'));
             let imageName = `${this.list[album][i]}`.replace(`${extention}`, '');
-            let url = `./assets/images/albums/${album}/thumbnails/${imageName}-thumb${extention}`;
+            let url = `./app/assets/images/albums/${album}/thumbnails/${imageName}-thumb${extention}`;
             let newThumbnail = new Image();
             newThumbnail.classList.add('lightbox__thumbnail');
             newThumbnail.setAttribute('slide-id', i);

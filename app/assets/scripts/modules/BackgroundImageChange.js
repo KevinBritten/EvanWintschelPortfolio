@@ -33,7 +33,7 @@ class BackgroundImageChange {
         for (let key of keys) {
             this.albumList[key].map((image) => {
                 if (image.includes('-bg')) {
-                    this.bgImageList.push(`./assets/images/albums/${key}/${image}`);
+                    this.bgImageList.push(`./app/assets/images/albums/${key}/${image}`);
                 }
             });
         }

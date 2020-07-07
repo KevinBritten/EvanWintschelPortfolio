@@ -21,6 +21,7 @@ class Lightbox {
         this.thumbnailWatcherFunctionBinded = this.thumbnailWatcherFunction.bind(this);
         this.thumbnailWatcher = new MutationObserver(this.thumbnailWatcherFunctionBinded);
         this.thumbnailWatcher.observe(this.thumbnailArea, { childList: true });
+        this.device = ""
         this.events();
     }
 
@@ -37,7 +38,18 @@ class Lightbox {
         this.currentImageWrapper.addEventListener('click', () => this.closeLightbox(), false);
         this.fullscreenIcon.addEventListener('click', () => this.fullscreenToggle());
         window.addEventListener('keydown', () => this.slideScrollKey());
+        this.determineScreen()
     }
+
+determineScreen() {
+   let windowWidth = window.screen.width
+   let device = ""
+   if (windowWidth >= 1200) {
+   device = "desktop"
+} else if (windowWidth >= 768) {
+device = "tablet"} else {
+    device = "mobile"}
+this.device = device}
 
     slideScrollKey() {
         if (event.keyCode === 39) {
@@ -56,6 +68,7 @@ class Lightbox {
             nextIndex = this.list[this.currentAlbum].length - 1;
         }
         this.displayCurrentImage(nextIndex);
+        console.log(this.device)
     }
 
     thumbnailWatcherFunction(mutation) {
@@ -81,7 +94,7 @@ class Lightbox {
     displayCurrentImage(currentImageIndex = 0) {
         let album = this.currentAlbum;
         let photo = new Image();
-        let url = `./app/assets/images/albums/${album}/${this.list[album][currentImageIndex]}`;
+        let url = `./app/assets/images/albums/${album}/${this.device}/${this.device}-${this.list[album][currentImageIndex]}`;
         photo.onload = () => {
             // requestAnimationFrame(() => {
             //     requestAnimationFrame(() => {

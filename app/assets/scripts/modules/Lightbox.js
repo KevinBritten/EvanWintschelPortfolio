@@ -42,9 +42,13 @@ class Lightbox {
     }
 
 determineScreen() {
-   let windowWidth = window.screen.width
+   let windowWidth = window.screen.width * window.devicePixelRatio
+   console.log(windowWidth)
    let device = ""
-   if (windowWidth >= 1200) {
+   if (windowWidth >= 2400) {
+    device = "desktophidpi"
+ } 
+   else if (windowWidth >= 1200) {
    device = "desktop"
 } else if (windowWidth >= 768) {
 device = "tablet"} else {

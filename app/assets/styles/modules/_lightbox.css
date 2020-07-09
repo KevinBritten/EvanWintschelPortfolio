@@ -84,14 +84,12 @@
             opacity: 1;
         }
     }
-    &__current-picture {
+    
+    &__current-image {
         height: 96%;
         &--fullscreen {
             min-height: 100vh;
         }
-    }
-    &__current-image {
-        height: 100%;
     }
     &__description {
         padding-top: 10px;

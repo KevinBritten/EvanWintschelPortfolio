@@ -1,4 +1,4 @@
-class AboutSection {
+class ContentSection {
     constructor() {
         this.aboutBtn = document.querySelector('#about-button');
         this.printsBtn = document.querySelector('#prints-button');
@@ -30,7 +30,7 @@ class AboutSection {
         let contentTexts = {
             About: `Born in Ontario, raised in Vancouver and living in Montreal. 
 Fortunate enough to attend a high school with a darkroom.`,
-            Prints: `If you you like to buy prints of my work or have any questions please send me an email via evan.wintschel@gmail.com`
+            Prints: `If you would like to buy prints of my work or have any questions please send me an email via evan.wintschel@gmail.com`
         };
         this.contentSection.style.minHeight = `${this.contentSectionHeight}px`;
         if (
@@ -58,4 +58,4 @@ Fortunate enough to attend a high school with a darkroom.`,
     }
 }
 
-export default AboutSection;
+export default ContentSection;

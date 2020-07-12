@@ -50,8 +50,10 @@ determineScreen() {
  } 
    else if (windowWidth >= 1200) {
    device = "desktop"
-} else if (windowWidth >= 768) {
-device = "tablet"} else {
+}
+//  else if (windowWidth >= 768) {
+// device = "tablet"} 
+else {
     device = "mobile"}
 this.device = device}
 

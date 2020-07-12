@@ -17,26 +17,51 @@ class BackgroundImageChange {
         this.randomStartImage();
         this.events();
         this.bgCycleStarter();
+        this.device = ""
     }
 
     events() {
+      
         this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
         this.albumArea.addEventListener('click', () => this.lightboxBackground());
         this.lightboxCloseButton.addEventListener('click', () => this.lightboxBackgroundClose());
         this.lightbox.addEventListener('click', () => this.lightboxBackgroundMouseClose(), false);
         this.lightboxImageWrapper.addEventListener('click', () => this.lightboxBackgroundMouseClose(), false);
     }
-
+    determineScreen() {
+        let windowWidth = window.screen.width * window.devicePixelRatio
+        console.log(windowWidth)
+        let device = ""
+        if (windowWidth >= 2400) {
+         device = "desktophidpi"
+      } 
+        else if (windowWidth >= 1200) {
+        device = "desktop"
+     } 
+    //  else if (windowWidth >= 768) {
+    //  device = "tablet"} 
+     else {
+         device = "mobile"}
+     this.device = device}
     bgImageListCreator() {
+        this.determineScreen()
         this.bgImageList = [];
         let keys = Object.keys(this.albumList);
+        if (this.device == 'mobile') {
+            for (let key of keys) {
+                this.albumList[key].map((image) => {
+                    if (image.includes('-mb')) {
+                        this.bgImageList.push(`./app/assets/images/albums/${key}/${this.device}/${this.device}-${image}`);
+                    }
+                })};
+        } else {
         for (let key of keys) {
             this.albumList[key].map((image) => {
                 if (image.includes('-bg')) {
-                    this.bgImageList.push(`./app/assets/images/albums/${key}/${image}`);
+                    this.bgImageList.push(`./app/assets/images/albums/${key}/${this.device}/${this.device}-${image}`);
                 }
             });
-        }
+        } }
     }
 
     bgImageListRandomizer() {

@@ -30,19 +30,22 @@ class BackgroundImageChange {
     }
     determineScreen() {
         let windowWidth = window.screen.width * window.devicePixelRatio
+        let windowHeight = window.screen.height * window.devicePixelRatio
         console.log(windowWidth)
         let device = ""
-        if (windowWidth >= 2400) {
+        if (windowWidth >= 2400 && windowWidth > windowHeight) {
          device = "desktophidpi"
       } 
-        else if (windowWidth >= 1200) {
+        else if (windowWidth >= 1200 && windowWidth > windowHeight) {
         device = "desktop"
      } 
     //  else if (windowWidth >= 768) {
     //  device = "tablet"} 
      else {
          device = "mobile"}
-     this.device = device}
+     this.device = device
+    console.log(windowWidth + "ww")}
+     
     bgImageListCreator() {
         this.determineScreen()
         this.bgImageList = [];

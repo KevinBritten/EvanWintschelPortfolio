@@ -3,6 +3,9 @@ body {
     overflow: scroll;
     overflow-y: hidden;
     transition: opacity 1s ease-in;
+    @mixin atMobile {
+        overflow:hidden;
+    }
 }
 
 img {

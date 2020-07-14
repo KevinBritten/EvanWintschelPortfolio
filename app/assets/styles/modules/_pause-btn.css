@@ -8,12 +8,14 @@
 	&--is-paused {
 		color: black;
 	}
-
+@mixin atMedium {
 	&:hover {
 		color: black;
-	}
+	}}
+
 
 	&:focus {
 		outline: none;
 	}
 }
+

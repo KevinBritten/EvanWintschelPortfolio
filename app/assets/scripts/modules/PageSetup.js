@@ -3,6 +3,7 @@ class PageSetup {
         this.setDimensions();
         this.disableKeyScroll();
         window.onload = this.pageOpacity;
+        window.onresize = this.setDimensions
     }
 
     disableKeyScroll() {

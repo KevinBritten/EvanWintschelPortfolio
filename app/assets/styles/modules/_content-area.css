@@ -9,6 +9,9 @@
         margin-left: auto;
         margin-right: auto;
         width: 400px;
+        @mixin atMobile {
+            width: 250px;
+        };
         height: auto;
         border-style: solid;
         border-radius: 8px;

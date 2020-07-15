@@ -5,10 +5,11 @@ import PageSetup from './modules/PageSetup';
 import EmailCopy from './modules/EmailCopy';
 import Lightbox from './modules/Lightbox';
 
+new PageSetup();
 new Lightbox();
 new BackgroundImageChange();
 new ContentSection();
-new PageSetup();
+
 new EmailCopy();
 
 const images = require.context('../images/', true, /\.(jpe?g|png)$/i);

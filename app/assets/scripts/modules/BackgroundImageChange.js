@@ -1,6 +1,7 @@
 import ImageList from './ImageList.js';
 const imageList = new ImageList();
 
+
 class BackgroundImageChange {
     constructor() {
         this.currentBgImage = document.querySelector('.bg-image--current');
@@ -19,7 +20,7 @@ class BackgroundImageChange {
         this.randomStartImage();
         this.events();
         this.bgCycleStarter();
-        this.device = ""
+        
 
     }
 
@@ -30,40 +31,22 @@ class BackgroundImageChange {
         this.lightbox.addEventListener('click', () => this.lightboxBackgroundMouseClose(), false);
         this.lightboxImageWrapper.addEventListener('click', () => this.lightboxBackgroundMouseClose(), false);
     }
-    determineScreen() {
-        let windowWidth = window.screen.width * window.devicePixelRatio
-        let windowHeight = window.screen.height * window.devicePixelRatio
-        console.log(windowWidth)
-        let device = ""
-        if (windowWidth >= 2400 && windowWidth > windowHeight) {
-         device = "desktophidpi"
-      } 
-        else if (windowWidth >= 1200 && windowWidth > windowHeight) {
-        device = "desktop"
-     } 
-    //  else if (windowWidth >= 768) {
-    //  device = "tablet"} 
-     else {
-         device = "mobile"}
-     this.device = device
-    console.log(windowWidth + "ww")}
-     
+
     bgImageListCreator() {
-        this.determineScreen()
         this.bgImageList = [];
         let keys = Object.keys(this.albumList);
-        if (this.device == 'mobile') {
+        if (window.device == 'mobile') {
             for (let key of keys) {
                 this.albumList[key].map((image) => {
                     if (image.includes('-mb')) {
-                        this.bgImageList.push(`./app/assets/images/albums/${key}/${this.device}/${this.device}-${image}`);
+                        this.bgImageList.push(`./app/assets/images/albums/${key}/${window.device}/${window.device}-${image}`);
                     }
                 })};
         } else {
         for (let key of keys) {
             this.albumList[key].map((image) => {
                 if (image.includes('-bg')) {
-                    this.bgImageList.push(`./app/assets/images/albums/${key}/${this.device}/${this.device}-${image}`);
+                    this.bgImageList.push(`./app/assets/images/albums/${key}/${window.device}/${window.device}-${image}`);
                 }
             });
         } }

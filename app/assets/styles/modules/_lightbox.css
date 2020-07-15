@@ -86,10 +86,13 @@
     }
     
     &__current-image {
-        height: 96%;
+        max-height: 96%;
+        max-width:100%;
+       
         &--fullscreen {
             min-height: 100vh;
-        }
+        };
+        margin: auto 0;
     }
     &__description {
         padding-top: 10px;

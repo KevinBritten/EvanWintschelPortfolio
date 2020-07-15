@@ -5,6 +5,8 @@ class BackgroundImageChange {
     constructor() {
         this.currentBgImage = document.querySelector('.bg-image--current');
         this.albumList = imageList.list;
+        this.bgImageContainer = document.querySelector('#bg-image-container')
+        this.bgDivs = document.querySelectorAll('.bg-image-container__overflow-hider')
         this.pauseBtn = document.querySelector('.pause-btn');
         this.bgImageListCreator();
         this.bgImageListRandomizer();
@@ -18,10 +20,10 @@ class BackgroundImageChange {
         this.events();
         this.bgCycleStarter();
         this.device = ""
+
     }
 
     events() {
-      
         this.pauseBtn.addEventListener('click', () => this.pauseBtnToggle());
         this.albumArea.addEventListener('click', () => this.lightboxBackground());
         this.lightboxCloseButton.addEventListener('click', () => this.lightboxBackgroundClose());
@@ -109,7 +111,7 @@ class BackgroundImageChange {
     }
 
     bgImageToggle() {
-        this.bgDivs.forEach((div) => {
+        document.querySelectorAll('.bg-image').forEach((div) => {
             div.classList.toggle('bg-image--current');
         });
     }
@@ -122,9 +124,10 @@ class BackgroundImageChange {
                 document.querySelector('#bg-image-container').classList.add('initialized');
                 return;
             }
-            let bgDivs = [...document.querySelector('#bg-image-container').children];
+            let bgDivs = document.querySelectorAll('.bg-image');
             bgDivs.forEach((image) => image.classList.toggle('bg-image--current'));
             document.querySelector('.bg-image--current').src = `${url}`;
+
         };
         img.src = url;
     }

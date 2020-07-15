@@ -8,12 +8,17 @@
 </head>
 
 <body>
+
     <div style="opacity: 1" class="site-reveal">
         <% include app/html-modules/_loading-spinner.ejs %>
     </div>
     <div id="bg-image-container">
+    <div class="bg-image-container__overflow-hider">
         <img class="bg-image bg-image--current">
-        <img class="bg-image">
+        </div>
+            <div class="bg-image-container__overflow-hider">
+
+        <img class="bg-image"></div>
     </div>
     <div class="page-content" style="opacity: 0">
         <div class="site-header">

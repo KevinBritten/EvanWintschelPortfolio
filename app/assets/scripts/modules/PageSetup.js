@@ -28,6 +28,9 @@ class PageSetup {
         let windowWidth = window.screen.width;
         document.body.style.minHeight = `${windowHeight}px`;
         document.body.style.minWidth = `${windowWidth}px`;
+        document.body.style.height = `${windowHeight}px`;
+        document.body.style.width = `${windowWidth}px`;
+      
     }
 }
 

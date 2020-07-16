@@ -77,6 +77,8 @@ class Lightbox {
         document.body.addEventListener('keydown', this.lightboxEscapeBinded);
         this.createThumbnails();
         this.displayCurrentImage();
+        this.deviceFullscreenToggle()
+
     }
 
     displayCurrentImage(currentImageIndex = 0) {
@@ -191,12 +193,13 @@ class Lightbox {
         this.currentImageWrapper.classList.toggle('lightbox__content--fullscreen');
         this.currentImage.classList.toggle('lightbox__current-image--fullscreen');
         if (window.device === 'mobile') {
-        this.deviceFullscreenToggle()
         } }
     
             deviceFullscreenToggle(){
                 let elem = document.documentElement
-                if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
+                // if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
+                if (this.lightbox.classList.contains('lightbox--is-visible')) {
+                    
                     // document.addEventListener('backbutton', () => this.fullscreenToggle(), false)
                     if (elem.requestFullscreen) {
                       elem.requestFullscreen();

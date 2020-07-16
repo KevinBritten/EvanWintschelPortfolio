@@ -58,7 +58,7 @@
             @mixin atMobile {
                 right: 0px;
                 font-size:2em;
-padding-top:10px
+                padding-top:10px
             }
         }
         &--fullscreen {
@@ -101,7 +101,13 @@ padding-top:10px
        
         &--fullscreen {
             min-height: 100vh;
-        };
+            @mixin atMobile {
+                width:100%;
+                
+                min-height:initial;
+                
+            }
+        }
         margin: auto 0;
     }
     &__description {
@@ -173,5 +179,8 @@ padding-top:10px
         &--is-current {
             opacity: 1;
         }
+    }
+    &--fullscreen-hidden {
+        display: none;
     }
 }

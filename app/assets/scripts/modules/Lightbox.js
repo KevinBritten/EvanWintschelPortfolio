@@ -173,11 +173,20 @@ class Lightbox {
             this.nextSlidebutton,
             this.imageNumberField
         ];
+        let itemsToHide = [
+            this.imageDescription,
+            this.thumbnailArea,
+            document.querySelector('#bg-image-container'),
+            document.querySelector('.content-area'),
+            document.querySelector('.site-header'),
+        ]
         let navButtons = [this.previousSlidebutton, this.nextSlidebutton];
         lightboxIcons.forEach((icon) => {
             icon.classList.toggle('lightbox--fullscreen-overlay');
         });
         navButtons.forEach((button) => button.classList.toggle('lightbox__nav--fullscreen'));
+        itemsToHide.forEach(item => item.classList.toggle('lightbox--fullscreen-hidden'))
+        // itemsToHide.forEach(item => item.style.display = item.style.display === 'none' ? 'initial' : 'none')
         this.fullscreenIcon.classList.toggle('lightbox__fullscreen-icon--fullscreen');
         this.currentImageWrapper.classList.toggle('lightbox__content--fullscreen');
         this.currentImage.classList.toggle('lightbox__current-image--fullscreen');
@@ -188,7 +197,7 @@ class Lightbox {
             deviceFullscreenToggle(){
                 let elem = document.documentElement
                 if (this.currentImageWrapper.classList.contains('lightbox__content--fullscreen')) {
-                    document.addEventListener('backbutton', () => this.fullscreenToggle(), false)
+                    // document.addEventListener('backbutton', () => this.fullscreenToggle(), false)
                     if (elem.requestFullscreen) {
                       elem.requestFullscreen();
                     } else if (elem.mozRequestFullScreen) { /* Firefox */
@@ -200,7 +209,7 @@ class Lightbox {
                     }
                   }
                  else {
-                    document.removeEventListener('backbutton', () => this.fullscreenToggle(), false)
+                    // document.removeEventListener('backbutton', () => this.fullscreenToggle(), false)
                     if (document.exitFullscreen) {
                         document.exitFullscreen();
                       } else if (document.mozCancelFullScreen) { /* Firefox */

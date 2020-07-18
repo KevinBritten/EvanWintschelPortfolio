@@ -12,21 +12,23 @@ class PageSetup {
         // let windowHeight = window.screen.height * window.devicePixelRatio
         let device = ""
         if (windowWidth >= 1200) {
+            console.log(windowWidth  * window.devicePixelRatio)
             if (windowWidth  * window.devicePixelRatio >= 2400) {
                 device = "desktophidpi"
              } else {
         device = "desktop"}
      } 
-     else {
-        device = "mobile"}
+    //  else {
+    //     
+    //     device = "mobile"}
     //     if (windowWidth >= 2400 && windowWidth > windowHeight) {
     //      device = "desktophidpi"
     //   } 
     //     else if (windowWidth >= 1200 && windowWidth > windowHeight) {
     //     device = "desktop"
     //  } 
-    //  else {
-    //     device = "mobile"}
+     else {
+        device = "mobile"}
     window.device = device
        }
 
@@ -51,7 +53,7 @@ class PageSetup {
     setDimensions() {
         let windowHeight = 0
         let windowWidth = 0
-        if (window.device = 'mobile') {
+        if (window.device === 'mobile') {
         let dimensions = [window.screen.height, window.screen.width].sort((a, b) => a - b)
         windowWidth = window.screen.width
         windowHeight = dimensions[1]

@@ -77,8 +77,9 @@ class Lightbox {
         document.body.addEventListener('keydown', this.lightboxEscapeBinded);
         this.createThumbnails();
         this.displayCurrentImage();
+        if (window.device === 'mobile') {
         this.deviceFullscreenToggle()
-
+        }
     }
 
     displayCurrentImage(currentImageIndex = 0) {

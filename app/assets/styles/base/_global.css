@@ -11,9 +11,7 @@ img {
     image-orientation: from-image;
 }
 
-@mixin atMobile {a:active {
-    transform: scale(1.3);
-}}
+
 
 * {
     -ms-overflow-style: none;  /* Internet Explorer 10+ */

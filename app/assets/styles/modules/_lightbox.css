@@ -21,6 +21,11 @@
         z-index: 1;
     }
     &__close-button {
+        @mixin atMobile {
+            &:active {
+            transform: scale(1.3);
+            }
+        }
         position: absolute;
         right: 10px;
         font-size: 35px;
@@ -44,6 +49,11 @@
         cursor: pointer;
         &:hover {
             color: $whiteSelect;
+        }
+        @mixin atMobile {
+            &:active {
+            transform: scale(1.3);
+            }
         }
         &--previous {
             left: 10px;
@@ -127,12 +137,15 @@
         right: 10px;
         cursor: pointer;
         transition: transform 200ms;
+        
+        
         &:hover {
             transform: scale(1.1, 1.1);
         }
-        &--fullscreen {
+        &--fullscreen {   
             bottom: 1%;
             transform: scale(1.1, 1.1);
+          
             &:hover {
                 transform: scale(1.0, 1.0);
             }

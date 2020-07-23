@@ -193,8 +193,7 @@ class Lightbox {
         this.fullscreenIcon.classList.toggle('lightbox__fullscreen-icon--fullscreen');
         this.currentImageWrapper.classList.toggle('lightbox__content--fullscreen');
         this.currentImage.classList.toggle('lightbox__current-image--fullscreen');
-        if (window.device === 'mobile') {
-        } }
+        }
     
             deviceFullscreenToggle(){
                 let elem = document.documentElement

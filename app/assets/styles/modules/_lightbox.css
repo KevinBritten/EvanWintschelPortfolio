@@ -9,9 +9,8 @@
     height: 100vh;
     width: 100%;
     min-height: 80%;
-    background-color: $blackTrans;
+    background-color: white;
     font-family: $josefinSans;
-    color: white;
     user-select: none;
     transition: opacity .5s ease-in;
     &--is-visible {
@@ -102,6 +101,8 @@
         text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
     }
     &__fullscreen-icon {
+        color: white;
+
         z-index: 2;
         position: absolute;
         bottom: 5%;
@@ -114,6 +115,7 @@
         &--fullscreen {
             bottom: 1%;
             transform: scale(1.1, 1.1);
+            color: black;
             &:hover {
                 transform: scale(1.0, 1.0);
             }

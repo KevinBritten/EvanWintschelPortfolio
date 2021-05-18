@@ -25,11 +25,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "a2c09c7043c6a383e3e1f75e3e67988f",
-    "url": "app/assets/images/albums/Blue/desktop/desktop-nothing but net-mb.png"
+    "url": "app/assets/images/albums/Blue/desktop/desktop-nothing but net.png"
   },
   {
     "revision": "53170b57bd967b7d73a1ca36377a699d",
-    "url": "app/assets/images/albums/Blue/desktop/desktop-nowhere-mb.JPG"
+    "url": "app/assets/images/albums/Blue/desktop/desktop-nowhere.JPG"
   },
   {
     "revision": "f607a7c43cf79c1af532402dc1619091",
@@ -45,11 +45,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "efb395170c89bbeb1a5f73c80e146ce0",
-    "url": "app/assets/images/albums/Blue/desktophidpi/desktophidpi-nothing but net-mb.png"
+    "url": "app/assets/images/albums/Blue/desktophidpi/desktophidpi-nothing but net.png"
   },
   {
     "revision": "feea74e809e7bdecf3287b9f4efb594b",
-    "url": "app/assets/images/albums/Blue/desktophidpi/desktophidpi-nowhere-mb.JPG"
+    "url": "app/assets/images/albums/Blue/desktophidpi/desktophidpi-nowhere.JPG"
   },
   {
     "revision": "5508fa282ec518577d6c2fa075b1e57e",
@@ -65,19 +65,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "b99265554968e1f05f1ee236107cd0ca",
-    "url": "app/assets/images/albums/Blue/mobile/mobile-nothing but net-mb.png"
+    "url": "app/assets/images/albums/Blue/mobile/mobile-nothing but net.png"
   },
   {
     "revision": "14df7208171d2deb5549518a1a3ce4d9",
-    "url": "app/assets/images/albums/Blue/mobile/mobile-nowhere-mb.JPG"
+    "url": "app/assets/images/albums/Blue/mobile/mobile-nowhere.JPG"
   },
   {
     "revision": "4fb2cd597b80d617e8a907abe57eeba8",
-    "url": "app/assets/images/albums/Blue/nothing but net-mb.png"
+    "url": "app/assets/images/albums/Blue/nothing but net.png"
   },
   {
     "revision": "f1a07b06fc8a8bff2e694143a38b7f1f",
-    "url": "app/assets/images/albums/Blue/nowhere-mb.JPG"
+    "url": "app/assets/images/albums/Blue/nowhere.JPG"
   },
   {
     "revision": "f50b8ba5fc17fb4d0b9ce284357f37bf",
@@ -93,11 +93,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "62e88b3822f84d05e3a802320dd48046",
-    "url": "app/assets/images/albums/Blue/thumbnails/nothing but net-mb-thumb.png"
+    "url": "app/assets/images/albums/Blue/thumbnails/nothing but net-thumb.png"
   },
   {
     "revision": "dfb0f091e3d1c02f8cb7f1ae74e3c146",
-    "url": "app/assets/images/albums/Blue/thumbnails/nowhere-mb-thumb.JPG"
+    "url": "app/assets/images/albums/Blue/thumbnails/nowhere-thumb.JPG"
   },
   {
     "revision": "d3b236420ed0c05d370c95fbb59f493f",
@@ -108,16 +108,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "app/assets/images/albums/City/Federal Rhur.jpg"
   },
   {
+    "revision": "bbc6329072c441adc5b781c95faa0f07",
+    "url": "app/assets/images/albums/City/Granville street.JPG"
+  },
+  {
     "revision": "cd38d02f6c4f1a8bd42abbd3d3cec232",
     "url": "app/assets/images/albums/City/MASSAG.JPG"
   },
   {
     "revision": "5101a8a54b1ec2e599c0943fef2674b6",
     "url": "app/assets/images/albums/City/Midnight.JPG"
-  },
-  {
-    "revision": "bbc6329072c441adc5b781c95faa0f07",
-    "url": "app/assets/images/albums/City/On Granville Street.JPG"
   },
   {
     "revision": "6b8c0794730fd2bf186c06a71395d672",
@@ -129,7 +129,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "98813121729209e43b06ddad9803b469",
-    "url": "app/assets/images/albums/City/Vancouver Real estate-mb.JPG"
+    "url": "app/assets/images/albums/City/Vancouver Real Estate.JPG"
   },
   {
     "revision": "8def530b4cbd3b2a70a6c7b8aed3d81a",
@@ -148,16 +148,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "app/assets/images/albums/City/desktop/desktop-Federal Rhur.jpg"
   },
   {
+    "revision": "21033b375e92cdf3bc248e0cb3481166",
+    "url": "app/assets/images/albums/City/desktop/desktop-Granville street.JPG"
+  },
+  {
     "revision": "fc2ccb18d55f82d28e321c9fcd0dc071",
     "url": "app/assets/images/albums/City/desktop/desktop-MASSAG.JPG"
   },
   {
     "revision": "c3f9200750001dd567ff4e30a457c2ca",
     "url": "app/assets/images/albums/City/desktop/desktop-Midnight.JPG"
-  },
-  {
-    "revision": "21033b375e92cdf3bc248e0cb3481166",
-    "url": "app/assets/images/albums/City/desktop/desktop-On Granville Street.JPG"
   },
   {
     "revision": "e7655468ba1652cdb3029b2f92a7bc99",
@@ -169,7 +169,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "6723c585bd843faf314ba5c8cda1790b",
-    "url": "app/assets/images/albums/City/desktop/desktop-Vancouver Real estate-mb.JPG"
+    "url": "app/assets/images/albums/City/desktop/desktop-Vancouver Real Estate.JPG"
   },
   {
     "revision": "69fd3345ded095c717d94d79913ecae7",
@@ -185,7 +185,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "38aeb55910ab562329fa5832e454a1af",
-    "url": "app/assets/images/albums/City/desktop/desktop-heart-mb.JPG"
+    "url": "app/assets/images/albums/City/desktop/desktop-heart.JPG"
   },
   {
     "revision": "c905f0c9fae814990e4ea633de0bc124",
@@ -200,16 +200,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "app/assets/images/albums/City/desktophidpi/desktophidpi-Federal Rhur.jpg"
   },
   {
+    "revision": "362848e66a15c1d718ff89424f5fb668",
+    "url": "app/assets/images/albums/City/desktophidpi/desktophidpi-Granville street.JPG"
+  },
+  {
     "revision": "27d8246cf994de59208161997a0f58df",
     "url": "app/assets/images/albums/City/desktophidpi/desktophidpi-MASSAG.JPG"
   },
   {
     "revision": "6b70f339629b8fb1810b6dba35f44a6c",
     "url": "app/assets/images/albums/City/desktophidpi/desktophidpi-Midnight.JPG"
-  },
-  {
-    "revision": "362848e66a15c1d718ff89424f5fb668",
-    "url": "app/assets/images/albums/City/desktophidpi/desktophidpi-On Granville Street.JPG"
   },
   {
     "revision": "000da4084ae1a1eb165d0f61b32421b9",
@@ -221,7 +221,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "82f1315c49101aef434baa17d1a66625",
-    "url": "app/assets/images/albums/City/desktophidpi/desktophidpi-Vancouver Real estate-mb.JPG"
+    "url": "app/assets/images/albums/City/desktophidpi/desktophidpi-Vancouver Real Estate.JPG"
   },
   {
     "revision": "1c41a65a6ad8e60c6bb05fd976006d27",
@@ -237,7 +237,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "eac29a6a08049ddebb4a6afedf439bd1",
-    "url": "app/assets/images/albums/City/desktophidpi/desktophidpi-heart-mb.JPG"
+    "url": "app/assets/images/albums/City/desktophidpi/desktophidpi-heart.JPG"
   },
   {
     "revision": "3df21088a6f18c4300e65de9cf70b23c",
@@ -249,7 +249,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "2f3cfb73e0b9672fc477053d1ef5deb4",
-    "url": "app/assets/images/albums/City/heart-mb.JPG"
+    "url": "app/assets/images/albums/City/heart.JPG"
   },
   {
     "revision": "4e83dda074ce2978efafe22ce86ee8ec",
@@ -260,16 +260,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "app/assets/images/albums/City/mobile/mobile-Federal Rhur.jpg"
   },
   {
+    "revision": "604fbbe027a39e02b01458a3217fc494",
+    "url": "app/assets/images/albums/City/mobile/mobile-Granville street.JPG"
+  },
+  {
     "revision": "848d2b5d26e65d3b7a2fbdedd27af2b5",
     "url": "app/assets/images/albums/City/mobile/mobile-MASSAG.JPG"
   },
   {
     "revision": "645be69506a3a5e41fbe0a4c700af98e",
     "url": "app/assets/images/albums/City/mobile/mobile-Midnight.JPG"
-  },
-  {
-    "revision": "604fbbe027a39e02b01458a3217fc494",
-    "url": "app/assets/images/albums/City/mobile/mobile-On Granville Street.JPG"
   },
   {
     "revision": "799184997c800909ec06198c5e21ba3a",
@@ -281,7 +281,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "648774bc384480993b8a2b7b82508e04",
-    "url": "app/assets/images/albums/City/mobile/mobile-Vancouver Real estate-mb.JPG"
+    "url": "app/assets/images/albums/City/mobile/mobile-Vancouver Real Estate.JPG"
   },
   {
     "revision": "1737a306d60d9aa321930ea240d98215",
@@ -297,7 +297,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "af5f131faa53c86ecee96801b8fab50d",
-    "url": "app/assets/images/albums/City/mobile/mobile-heart-mb.JPG"
+    "url": "app/assets/images/albums/City/mobile/mobile-heart.JPG"
   },
   {
     "revision": "31ed8325d8c656a45d450220e6e7929a",
@@ -316,16 +316,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "app/assets/images/albums/City/thumbnails/Federal Rhur-thumb.jpg"
   },
   {
+    "revision": "2048799489f03de29da3d93a4fd844b1",
+    "url": "app/assets/images/albums/City/thumbnails/Granville street-thumb.JPG"
+  },
+  {
     "revision": "2e6d78d2c36f0d5b6707eee3d0b97428",
     "url": "app/assets/images/albums/City/thumbnails/MASSAG-thumb.JPG"
   },
   {
     "revision": "924f03b27ab07c6680013fbb60ce061d",
     "url": "app/assets/images/albums/City/thumbnails/Midnight-thumb.JPG"
-  },
-  {
-    "revision": "2048799489f03de29da3d93a4fd844b1",
-    "url": "app/assets/images/albums/City/thumbnails/On Granville Street-thumb.JPG"
   },
   {
     "revision": "feef20ac451958667faad1b64efd5fde",
@@ -337,7 +337,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "ba3e96853a5c2c86563bbbf7e70d7bbe",
-    "url": "app/assets/images/albums/City/thumbnails/Vancouver Real estate-mb-thumb.JPG"
+    "url": "app/assets/images/albums/City/thumbnails/Vancouver Real Estate-thumb.JPG"
   },
   {
     "revision": "ca58ccee243f8a12956bec459ed58760",
@@ -353,7 +353,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "f1e95f72c869f6441cf430cd69852472",
-    "url": "app/assets/images/albums/City/thumbnails/heart-mb-thumb.JPG"
+    "url": "app/assets/images/albums/City/thumbnails/heart-thumb.JPG"
   },
   {
     "revision": "f4d4a30a55bda72b15ec608317f431f8",
@@ -1500,18 +1500,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "app/assets/images/albums/crust/thumbnails/happy birthday-thumb.JPG"
   },
   {
-    "revision": "b811ed143ae733a53de479dc442efb1e",
-    "url": "app/assets/images/icons/email-icon.png"
-  },
-  {
     "revision": "0e84d5926187e7a3b785febd3a55bf1d",
     "url": "app/assets/images/icons/insta-icon.png"
   },
   {
-    "url": "main.4518911620a1c1dc3e07.js"
+    "url": "main.6c7abeb4ed9ec986938f.js"
   },
   {
-    "url": "styles.4518911620a1c1dc3e07.css"
+    "url": "styles.6c7abeb4ed9ec986938f.css"
   },
   {
     "url": "vendors~main.779a16cb8f5dbc1e21dd.js"
